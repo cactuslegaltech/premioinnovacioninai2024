@@ -1,0 +1,1441 @@
+---
+
+comment: |
+
+  MEJORAS:
+  - en lugar de QUEJAS Y SUGERENCIAS (tienes algún comentario?)
+  - VERO: pase publicaciones del INAI.
+  - firma siempre tiene que estar, impriman y firme o firmen en línea. en el que me mandó dice qué se necesita.
+  - Cambiar tipo_id_rep por facultades_rep
+  - buscar respuestas de comentarios de templates
+  - aviso_privacidad agregar ya que vero lo pase.
+  - Agregar a IA posibilidad de orientar al usuario sobre el derecho que debe solicitar ejercer.
+  - Traducción a náhuatl con IA.
+  - comenar todo para que cualquier entienda GPT
+  
+  DUDAS:
+
+  - id representante vdd?
+  - VERO, si no la firman en el momento se tiene por no presentada? y si los forzamos a que la firmen digitalmente para mayor efectividad? o si no firman, ps no le decimos que la recibimos, sino les indicamos en pasos a seguir que la firmen y luego la envíen a equis...
+  - VERO que show, cómo aprovechamos las notificaciones automáticas? 
+  - VERO pasarme aviso de privacidad para este flujo.
+  - qué pasa si tiene más de una relación? explicación collapse de que seleccione la que da raíz principal a la solicitud o algo así.
+  - ¿Mostramos aviso de privacidad? o no pq se supone que ya lo habíamos mostrado y ellos aceptado en primer lugar.
+  - ¿Quién debe contar con este documento?
+  - ¿Para qué sirve?
+  - Les dejamos ponerse creativos y solicitar algún otro derecho mediante este formulario relacionado con sus datos personales?
+  - REDACCIÓN: "Recuerde que el ejercicio aquellas finalidades que no son necesarias para el cumplimiento de las obligaciones derivadas del contrato de prestación de servicios y distribución."
+  - MEJORAR TEXTO "Describe la revocación", o ni les pedimos que la describan?
+  - ¿Firma electrónica trazo digital?
+
+  FUTURO:
+  
+  - Traducir a dialectos.
+  - ligar a sitio web de cactus ya que todo esté jalando
+
+  RESUELTOS:
+
+
+  - propio_derecho_sheets
+  - tipo_solicitud_sheets
+  - revisar sheets
+  - quitar debug.
+  - En ayuda, agregar botón para ir a portal de datso personales.
+  - ARREGLAR ¿Quién debe contar con este documento?
+  - arreglar: - Acceso: Derecho mediante el cual el titular (term definition)" data-bs-toggle="popover" data-bs-container="body" data-bs-placement="bottom" data-bs-content="El titular es …">titular tiene derecho a solicitar y ser informado sobre sus Datos Personales, el origen de estos, el tratamiento del cual sean objeto, las cesiones realizadas o que se pretendan realizar, así como a tener acceso al aviso de privacidad al que está sujeto el tratamiento.
+  - posibilidad de ejercer más de un derecho. object: derechos_ejercidos.
+  - hacerlo más amigable. Ej. qué quieres hacer? cancelar, corregir, etc. y luego le pregunte, cuántos datos deseas corregir, etc.
+  - Agregar en ayuda CONSULTAR IA.
+  - Posibilidad de ejercer más de un derecho en una sola solicitud.
+
+---
+
+code: |
+  
+  texto_relacion_visitante = ""
+  
+---
+
+code: |
+  
+  documento_flujo = "Solicitud ARCO"
+
+---
+
+code: |
+  
+  fecha_solicitud = today()
+  
+---
+
+features:
+
+  css: cactus.css
+  
+---
+
+modules:
+
+  - .progressivedisclosure
+  
+comment: |
+
+  - .appscript
+  
+---
+
+features:
+
+  css: progressivedisclosure.css
+---
+metadata:
+  logo: |
+       
+---
+metadata:
+  title: |
+    Solicitud de Derechos ARCO
+  short title: |
+   ARCO
+  description: |
+    Este archivo tiene la finalidad de eficientar el proceso de solicitud de ejercicio de derechos ARCO tanto para el titular como para que el responsable pueda hacer un buen seguimiento al seguimiento y resolución de la solicitud.
+  authors:
+    - name: Diego Flores Olea y Verónica Siten.
+      organization: Cactus Legal Tech 
+  show login: False
+  exit url: https://apps.cactuslegaltech.com/interview?i=docassemble.playground4todos:ls.yml
+  exit label: |
+
+---
+auto terms:
+  - Titularr: |
+      El titular es ...
+
+---
+comment: |
+default screen parts:
+  under: |
+    ${prog_disclose(mostrar_ayuda_local)}
+    <br/>
+    <br/>
+    <em>Powered by </em><strong><a href="https://www.cactuslegaltech.com/" style="color: #000000"><i/>Cactus Legal Tech</i></a></strong>.
+
+
+---
+
+template: mostrar_ayuda_local
+subject: |
+  Ayuda
+content: |  
+  <button style="border: 1px solid; padding: 6px 12px;" onclick="window.open('', '_blank');">&#x1F4A1; Consultar Inteligencia Artificial</button>
+  <br/>
+  <br/>
+  <button style="border: 1px solid; padding: 6px 12px;" onclick="window.open('https://apps.cactuslegaltech.com/interview?i=docassemble.playground4inai:portal_datos_personales.yml', '_blank');">&#x1F512; Portal de datos personales</button>
+  <br/>
+  <br/>
+  <button style="border: 1px solid; padding: 6px 12px;" onclick="window.open('', '_blank');">&#x1F4AC; WhatsApp Lic. X</button>
+  <br/>
+  <br/>
+  <button style="border: 1px solid; padding: 6px 12px;" onclick="window.open('https://wa.me/523315401920', '_blank');">&#x1F527; Soporte técnico</button>
+  <br/>
+  <br/>
+  ${ action_button_html(url_of('restart'), label = "Reiniciar", color = "warning", size = "md")}
+  <br/>
+  <br/>
+  <br/>
+  <em>Powered by </em><strong><a href="https://www.cactuslegaltech.com/"color: #000000"><i/>Cactus Legal Tech</i></a></strong>.
+
+comment: |
+  ${action_button_html(url_action("revision_respuestas"), label = "Edita tus respuestas", color = "dark", size = "md")}
+  <br/>
+  <br/>
+  
+---
+initial: True
+code: |
+  
+  iniciales
+  
+  recabar_solicitud_arco
+
+  recabar_final
+  
+---
+
+code: |
+  
+  nombre_completo_titular
+  
+  tipo_id
+  
+  if hay_representante:
+    
+    nombre_rep_titular
+    
+    tipo_id_rep
+    
+  else:
+    
+    tipo_id_rep = ""
+    
+    
+  email_solicitante
+  
+  derechos_ejercidos
+    
+  texto_datos_acceso
+    
+  texto_datos_incorrectos
+    
+  texto_datos_correctos
+
+  texto_datos_cancelacion
+
+  texto_datos_oposicion
+
+  texto_datos_revocacion  
+  
+  texto_domicilio
+  
+  texto_email
+
+  texto_relacion_cliente
+
+  texto_relacion_proveedor
+
+  texto_relacion_empleado
+
+  texto_relacion_exempleado
+
+  texto_relacion_candidato
+
+  texto_relacion_otro
+  
+  if quiere_efirma:
+  
+    if efirma == "trazo":
+      
+      trazo_digital
+      
+    elif efirma == "imagen":
+      
+      imagen_firma
+      
+  recabar_solicitud_arco = True
+
+---
+
+event: descarga_solicitud
+question: |
+  <div align="center">
+  [FILE listo_cactus.png, 18%, ${documento_flujo} Enviado]  
+subquestion: |
+  <div align="justify">
+  Hemos recibido tu solicitud, puedes descargarla presionando sobre la siguiente imagen o en el buzón de ${email_solicitante}.
+  <br/>
+  <br/>
+  ${solicitud.docx}
+  <br/>
+  <br/>
+  A continuación los plazos previstos para este proceso:
+  <br/>
+  <br/>
+  - Requerimiento de información adicional (en caso de que la solicitud no sea clara): 5 días hábiles.
+  <br/>
+  - Desahogo del requerimiento por parte del  de los Datos: 10 días hábiles. 
+  <br/>
+  - Respuesta a la solicitud por parte de RESPONSABLE: 20 días hábiles.
+  <br/>
+  - Respuesta a la solicitud en caso de ampliación por parte de RESPONSABLE: 40 días hábiles.
+  <br/>
+  - Plazo para hacer efectivo el derecho en caso de que resulte procedente: 15 días hábiles.
+  <br/>
+  <br/>
+  En caso de inconformidad, puede acudir al Instituto Nacional de Transparencia, Acceso a la Información y Protección de Datos Personales (INAI) o a <u style="color: blue;"><a href='www.inai.org.mx' style="color: blue;" target="_blank">su sitio web</a></u>.
+  <br/>
+  <br/>
+  Equipo de <u style="color: blue;"><a href='https://www.cactuslegaltech.com/' style="color: blue;" target="_blank">Responsable, SA de CV</a></u>. 
+  <br/>
+  <br/>
+under: |
+  <br/>
+  <br/>
+    
+  ${ action_button_html(url_of('new_session'), label = "Hacer otra solicitud", color = "warning", size = "md")}
+    <br/>
+---
+
+code: |
+  
+  intro
+      
+  fecha_inicio = today()
+  
+  hora_inicio = current_datetime()
+    
+  iniciales = True
+
+---
+
+question: |
+  <div align="center">[FILE firma.png, 25%, Firma]  <div align="center">
+subquestion: |
+  <div align="justify">¿Quieres firmar electrónicamente ahora mismo la solicitud?
+  <br/>
+  <br/>
+fields:
+  
+  - no label: quiere_efirma
+    input type: radio
+    choices:
+      - Sí, quiero firmar electrónicamente: true
+      - No: false
+  - Selecciona una forma para firmar de manera electrónica: efirma
+    input type: radio
+    show if:
+      variable: quiere_efirma
+      is: true
+    choices:
+      - Trazo digital: trazo
+        help: |
+          Con tu dedo en una pantalla táctil o con tu mouse en una computadora de escritorio.
+      - Imagen: imagen
+        help: |
+          Carga la imagen que contiene tu firma como en Adobe.
+  - Carga la imagen: imagen_firma
+    datatype: file
+    accept: |
+      "image/jpeg, image/png"
+    show if:
+      variable: efirma
+      is: imagen
+    
+
+
+---
+
+template: mostrar_explicacion_titular
+subject: |
+  ¿Quién es el titular?
+content: |
+  <div align="justify">El titular es la persona a la cual pertenecen los datos personales que están siendo recolectados, utilizados o almacenados por una empresa o entidad.
+  <br/>
+  <br/>
+  Por ejemplo, si una empresa recoge tu nombre, dirección, correo electrónico y número de teléfono, tú eres el titular de esos datos personales. Como titular, tienes ciertos derechos sobre tus datos, como el derecho a saber cómo se están utilizando, a corregirlos si están incorrectos, a oponerte a su uso y a solicitarlos para que sean eliminados, entre otros.</div align="justify">
+  
+---
+
+question: |
+  <div align="center">[FILE imagen_titular.png, 25%, Titular]</div align="center">
+subquestion: |
+  <b>Titular</b>
+  <br/>
+  <br/>
+  ${prog_disclose(mostrar_explicacion_titular)}
+fields:
+  
+  - Nombre: nombre_titular
+  - Apellido paterno: apellido_paterno_titular
+  - Apellido materno: apellido_materno_titular
+    required: False
+
+    
+
+---
+
+code: |
+  
+  if tipo_id == "votar":
+    
+    tipo_id_sheets = "INE"
+    
+  elif tipo_id == "pasaporte":
+    
+    tipo_id_sheets = "Pasaporte"
+
+  elif tipo_id == "militar":
+    
+    tipo_id_sheets = "Cartilla militar"
+
+  elif tipo_id == "nacimiento":
+    
+    tipo_id_sheets = "Acta de nacimiento"
+    
+  elif tipo_id == "otra":
+    
+    tipo_id_sheets = capitalize(otro_tipo_id)
+
+  
+---
+question: |
+  <div align="center">[FILE imagen_titular.png, 25%, Titular]</div align="center">
+subquestion: |
+  <div align="justify"><b>Identificación de ${nombre_completo_titular}</b>
+  <br/>
+  <br/>
+fields:
+  - no label: tipo_id
+    datatype: dropdown
+    hint: Selecciona un tipo de identificación...
+    choices:
+      - INE (credencial para votar): votar
+      - Pasaporte: pasaporte
+      - Cartilla de servicio militar: militar
+      - Otra: otra
+      - Acta de nacimiento (en caso de ser un menor): nacimiento
+  - Especificar documento: otro_tipo_id
+    show if:
+      variable: tipo_id
+      is: otra
+  - Cargar pasaporte: identificacion
+    datatype: files
+    show if: 
+      variable: tipo_id
+      is: pasaporte
+
+  - Cargar credencial para votar: identificacion
+    datatype: files
+    show if: 
+      variable: tipo_id
+      is: votar
+
+  - Cargar cartilla de servicio militar: identificacion
+    datatype: files
+    show if: 
+      variable: tipo_id
+      is: militar
+
+  - Cargar documento: identificacion
+    datatype: files
+    show if: 
+      variable: tipo_id
+      is: otra
+
+  - Cargar acta de nacimiento: identificacion
+    datatype: files
+    show if: 
+      variable: tipo_id
+      is: nacimiento
+
+
+---
+
+code: |
+  
+  if tipo_id == "otra":
+  
+    texto_especificar_id = otro_tipo_id
+    
+  else:
+  
+    texto_especificar_id = ""
+
+---
+
+comment: |
+  
+  if not hay_representante:
+    
+    tipo_id_rep == "poder" = False
+    
+    tipo_id_rep == "instrumento" = False
+  
+---
+
+code: |
+  
+  if apellido_materno_titular == "":
+    
+    nombre_completo_titular = tcm(nombre_titular) + " " + tcm(apellido_paterno_titular)
+  
+  else:
+    
+    nombre_completo_titular = tcm(nombre_titular) + " " + tcm(apellido_paterno_titular) + " " + tcm(apellido_materno_titular)
+
+---
+
+code: |
+  
+  if apellido_materno_rep_titular == "":
+    
+    nombre_completo_rep_titular = tcm(nombre_rep_titular) + " " + tcm(apellido_paterno_rep_titular)
+  
+  else:
+    
+    nombre_completo_rep_titular = tcm(nombre_rep_titular) + " " + tcm(apellido_paterno_rep_titular) + " " + tcm(apellido_materno_rep_titular)
+
+---
+
+code: |
+  
+  
+  nombre_completo_solicitante = nombre_completo_titular
+
+---
+
+code: |
+  
+  if hay_representante:
+    
+    propio_derecho_sheets = "No, por conducto de " + nombre_completo_rep_titular
+    
+    if tipo_id_rep == "poder":
+    
+      facultades_rep_sheets = "Poder simple"
+      
+    else:
+      
+      facultades_rep_sheets = "Poder notarial"
+    
+  else:
+    
+    propio_derecho_sheets = "Sí"
+    
+    facultades_rep_sheets = "N/A"
+    
+  
+---
+
+question: |
+  <div align="center">[FILE imagen_titular.png, 25%, Titular]</div align="center">
+subquestion: |
+  <div align="justify">¿Quién firmará esta solicitud?
+  <br/>
+  <br/>
+fields:
+  - no label: hay_representante
+    input type: radio
+    choices:
+      - ${nombre_completo_titular}: false
+      - Un representante: true
+  - show if:
+      variable: hay_representante
+      is: true
+    note: |
+      <b>Representante de ${nombre_completo_titular}</b>:
+  - Nombre: nombre_rep_titular
+    show if:
+      variable: hay_representante
+      is: true
+  - Apellido paterno: apellido_paterno_rep_titular
+    show if:
+      variable: hay_representante
+      is: true
+  - Apellido materno: apellido_materno_rep_titular
+    show if:
+      variable: hay_representante
+      is: true
+    required: False    
+  - Selecciona el documento con el cual se acreditan las facultades de representación: tipo_id_rep
+    show if:
+      variable: hay_representante
+      is: true
+    input type: radio
+    choices:
+      - Carta poder firmada ante dos testigos y copia de sus identificaciones: poder
+      - Instrumento público (escritura): instrumento
+
+  - Cargar carta poder e identificaciones de quienes firman la carta: identificacion_rep
+    datatype: files
+    accept: |
+      "image/jpeg, image/png"
+    show if:
+      variable: tipo_id_rep
+      is: poder
+  - Cargar escritura: identificacion_rep
+    datatype: files
+    required: false
+    show if:
+      variable: tipo_id_rep
+      is: instrumento
+
+---
+
+question: |
+  <div align="center">[FILE imagen_titular.png, 25%, Titular]</div align="center">
+subquestion: |
+  <div align="justify">¿Qué quieres hacer en relación a tus datos personales en posesión de Responsable, SA de CV?
+  <br/>
+  <br/>
+fields:
+  - no label: derechos_ejercidos
+    datatype: checkboxes
+    none of the above: Ninguna de las anteriores
+    choices:
+      - Conocer los datos personales tienen sobre ti: acceso
+      - Corrección de dato(s) personales: rectificacion
+      - Eliminar datos personales: cancelacion
+      - Prohibir que usen tus datos personales para ciertas finalidades: oposicion
+      - Quiero revocar mi consentimiento o autorización para que usen mis datos personales: revocacion
+    
+  - Datos que quieres conocer: texto_datos_acceso_manual
+    datatype: area
+    rows: 3
+    show if:
+      variable: derechos_ejercidos["acceso"]
+      is: true
+  - show if:
+      variable: derechos_ejercidos["rectificacion"]
+      is: true
+    note: |
+      <b>Datos que quieres corregir</b>:
+  - Datos incorrectos: texto_datos_incorrectos_manual
+    datatype: area
+    rows: 3
+    hint: Nombre - Dwayn
+    show if:
+      variable: derechos_ejercidos["rectificacion"]
+      is: true
+  - Datos correctos: texto_datos_correctos_manual
+    hint: Nombre - Dwayne
+    datatype: area
+    rows: 3
+    show if:
+      variable: derechos_ejercidos["rectificacion"]
+      is: true
+  - Datos que quieres sean eliminados: texto_datos_cancelacion_manual
+    datatype: area
+    hint: Estado civil
+    rows: 3
+    show if:
+      variable: derechos_ejercidos["cancelacion"]
+      is: true
+  - Finalidades para la(s) que ya no quieres que sean usados tus datos personales: texto_datos_oposicion_manual
+    datatype: area
+    hint: Publicidad
+    rows: 3
+    show if:
+      variable: derechos_ejercidos["oposicion"]
+      is: true
+
+  - show if:
+      variable: derechos_ejercidos["revocacion"]
+      is: true
+    note: |
+      <b>Al ejercer este derecho, nos revocas tu autorización para tratar tus datos personales. Por favor toma en cuenta que eso impediría continuar sosteniendo una relación contigo</b>.
+  - Expresa tu deseo de revocar tu autorización: texto_datos_revocacion_manual
+    datatype: area
+    rows: 3
+    show if:
+      variable: derechos_ejercidos["revocacion"]
+      is: true
+ 
+validation code: |
+  
+  if derechos_ejercidos.all_false():
+    
+    validation_error("Si no estás interesado en alguna de las opciones mencionadas, quizá lo que necesitas no es ejercer un derecho ARCO.")
+  
+---
+
+question: |
+  <div align="center">[FILE imagen_titular.png, 25%, Titular]</div align="center">
+subquestion: |
+  <div align="justify">Selecciona una intención u objetivo relacionado con tus datos personales en posesión de Responsable, SA de CV.
+  <br/>
+  <br/>
+fields:
+  - no label: tipo_solicitud
+    input type: radio
+    choices:
+      - Acceder: acceso
+        help: |
+          Derecho mediante el cual el titular tiene derecho a solicitar y ser informado sobre sus Datos Personales, el origen de estos, el tratamiento del cual sean objeto, las cesiones realizadas o que se pretendan realizar, así como a tener acceso al aviso de privacidad al que está sujeto el tratamiento.
+      - Rectificar o corregir: rectificacion
+        help: |
+          Derecho mediante el cual se solicita la corrección de los datos personales por ser inexactos, incompletos, excesivos o no estar actualizados. 
+      - Cancelar: cancelacion
+        help: |
+          Se refiere al derecho que solicita la eliminación, supresión o borrado de los datos personales de los archivos, registros, expedientes y sistemas del particular que trate sus datos. 
+      - Oponerte: oposicion
+        help: |
+          Derecho mediante el cual se solicita que se concluya el tratamiento de los datos personales.
+      - Revocar: revocacion
+  - Indicar los datos a los que desea tener acceso: texto_datos_acceso_manual
+    datatype: area
+    rows: 3
+    show if:
+      variable: tipo_solicitud
+      is: acceso
+  - show if:
+      variable: tipo_solicitud
+      is: rectificacion
+    note: |
+      <b>Si deseas ejercer este derecho, favor de indicar los datos que desea rectificar</b>:
+  - Datos incorrectos: texto_datos_incorrectos_manual
+    datatype: area
+    rows: 3
+    show if:
+      variable: tipo_solicitud
+      is: rectificacion
+  - Datos correctos: texto_datos_correctos_manual
+    datatype: area
+    rows: 3
+    show if:
+      variable: tipo_solicitud
+      is: rectificacion
+  - show if:
+      variable: tipo_solicitud
+      is: cancelacion
+    note: |
+      <b>Al ejercer este derecho, el Responsable bloqueará sus datos y posteriormente se suprimirán de nuestra base de datos</b>.
+  - Favor de especificar los datos que desea cancelar: texto_datos_cancelacion_manual
+    datatype: area
+    rows: 3
+    show if:
+      variable: tipo_solicitud
+      is: cancelacion
+  - show if:
+      variable: tipo_solicitud
+      is: oposicion
+    note: |
+      <b>Indique la(s) finalidades para la(s) que quiere revocar su consentimiento.</b>.
+      <br/>
+      <br/>
+      Recuerde que el ejercicio aquellas finalidades que no son necesarias para el cumplimiento de las obligaciones derivadas del contrato de prestación de servicios y distribución.
+  - no label: texto_datos_oposicion_manual
+    datatype: area
+    rows: 3
+    show if:
+      variable: tipo_solicitud
+      is: oposicion
+
+  - show if:
+      variable: tipo_solicitud
+      is: revocacion
+    note: |
+      <b>Al ejercer este derecho, nos revoca el consentimiento para tratar sus datos personales, por favor tome en cuenta que eso impediría continuar sostener una relación con usted</b>.
+  - Describe la revocación: texto_datos_revocacion_manual
+    datatype: area
+    rows: 3
+    show if:
+      variable: tipo_solicitud
+      is: revocacion
+
+---
+
+question: |
+  <div align="center">[FILE notificacion.png, 17%,  Notificación]  <div align="center">
+subquestion: |
+  <div align="justify">¿Cómo deseas ser contactado para recibir cualquier notificación relacionada a esta solicitud?
+  <br/>
+  <br/>
+fields:
+  - no label: notificacion
+    input type: radio
+    choices:
+      - Domicilio: domicilio
+      - Correo electrónico: email
+  - Domicilio: domicilio
+    datatype: area
+    rows: 3
+    show if:
+      variable: notificacion
+      is: domicilio
+  - Correo electrónico: email
+    datatype: email
+    show if:
+      variable: notificacion
+      is: email
+
+---
+
+code: |
+ 
+  if notificacion == "domicilio":
+    
+    email = "n/a"
+    
+  elif notificacion == "email":
+    
+    domicilio = "n/a"
+    
+  
+---
+question: |
+  Traza tu firma
+signature: trazo_digital
+under: |
+  % if hay_representante:
+  ${nombre_completo_rep_titular}
+  % else:
+  ${nombre_completo_titular}
+  % endif
+
+clear button label: |
+  Borrar
+---
+
+code: | 
+  if notificacion == "email":
+    
+    email_default = email
+    
+  else:
+    
+    email_default = ""
+ 
+---
+
+question: |
+  <div align="center">[FILE notificacion.png, 17%,  Notificación]  <div align="center">
+subquestion: |
+  <div align="justify">Ingresa el correo electrónico en el que quieres recibir tu acuse de recepción a esta solicitud.
+  <br/>
+  <br/>
+fields:
+  - no label: email_solicitante
+    datatype: email
+    default: ${email_default}
+
+---
+
+question: |
+  <div align="center">[FILE relacion.png, 29%,  Relación]  <div align="center">
+subquestion: |
+  <b>Relación con el Responsable</b>
+  <br/>
+  <br/>
+  <i>Si hay más de un tipo de relación, seleccionar la principal.</i>
+fields:
+  - no label: tipo_relacion
+    datatype: dropdown
+    choices:
+      - Cliente: cliente
+      - Proveedor: proveedor
+      - Empleado: empleado
+      - Exempleado: exempleado
+      - Candidato a empleo: candidato
+      - Otro: otro
+  - Periodo: periodo
+    show if:
+      variable: tipo_relacion
+      is: cliente
+  - Periodo: periodo
+    show if:
+      variable: tipo_relacion
+      is: proveedor
+  - Periodo: periodo
+    show if:
+      variable: tipo_relacion
+      is: empleado
+  - Cargo: cargo
+    show if:
+      variable: tipo_relacion
+      is: empleado
+  - Periodo: periodo
+    show if:
+      variable: tipo_relacion
+      is: exempleado
+  - Cargo: cargo
+    show if:
+      variable: tipo_relacion
+      is: exempleado
+  - Periodo: periodo
+    show if:
+      variable: tipo_relacion
+      is: candidato
+  - Especifique tipo de relación: otro_tipo_relacion
+    show if:
+      variable: tipo_relacion
+      is: otro      
+
+---
+
+code: |
+  
+  if tipo_relacion == "otro":
+    
+    texto_relacion_otro = fx_pt(otro_tipo_relacion)
+    
+  else:
+    
+    texto_relacion_otro = ""  
+
+---
+
+code: |
+  
+  if tipo_relacion == "candidato":
+    
+    texto_relacion_candidato = fx_pt(periodo)
+    
+  else:
+    
+    texto_relacion_candidato = ""  
+      
+---
+
+code: |
+  
+  if tipo_relacion == "exempleado":
+    
+    texto_relacion_exempleado = "Cargo: " + cargo + ". Periodo: " + fx_pt(periodo)
+    
+  else:
+    
+    texto_relacion_exempleado = ""  
+
+---
+
+code: |
+  
+  if tipo_relacion == "empleado":
+    
+    texto_relacion_empleado = "Cargo: " + cargo + ". Periodo: " + fx_pt(periodo)
+    
+  else:
+    
+    texto_relacion_empleado = ""  
+
+---
+
+comment: |
+  
+  if tipo_relacion == "visitante":
+    
+    texto_relacion_visitante = "visita al sitio web alrededor del " + fx_pt(periodo)
+    
+  else:
+    
+    texto_relacion_visitante = ""  
+
+---
+
+code: |
+  
+  if tipo_relacion == "proveedor":
+    
+    texto_relacion_proveedor = fx_pt(periodo)
+    
+  else:
+    
+    texto_relacion_proveedor = ""  
+    
+---
+
+code: |
+  
+  if tipo_relacion == "cliente":
+    
+    texto_relacion_cliente = fx_pt(periodo)
+    
+  else:
+    
+    texto_relacion_cliente = ""
+  
+---
+
+code: |
+  
+  if notificacion == "domicilio":
+    
+    texto_domicilio = fx_pt(domicilio)
+    
+  else:
+    
+    texto_domicilio = ""
+    
+---
+
+code: |
+  
+  if notificacion == "email":
+    
+    texto_email = fx_pt(email)
+    
+  else:
+    
+    texto_email = ""
+    
+---
+
+code: |
+  
+  if derechos_ejercidos["revocacion"]:
+    
+    texto_datos_revocacion = fx_pt(texto_datos_revocacion_manual)
+    
+  else:
+    
+    texto_datos_revocacion = ""
+    
+
+---
+
+code: |
+  
+  if derechos_ejercidos["oposicion"]:
+    
+    texto_datos_oposicion = fx_pt(texto_datos_oposicion_manual)
+    
+  else:
+    
+    texto_datos_oposicion = ""
+    
+---
+
+code: |
+  
+  if derechos_ejercidos["cancelacion"]:
+    
+    texto_datos_cancelacion = fx_pt(texto_datos_cancelacion_manual)
+    
+  else:
+    
+    texto_datos_cancelacion = ""
+
+---
+
+code: |
+  
+  if derechos_ejercidos["rectificacion"]:
+    
+    texto_datos_incorrectos = fx_pt(texto_datos_incorrectos_manual)
+    
+    texto_datos_correctos = fx_pt(texto_datos_correctos_manual)
+    
+  else:
+    
+    texto_datos_incorrectos = ""
+    
+    texto_datos_correctos = ""
+
+---
+
+code: |
+  
+  if derechos_ejercidos["acceso"]:
+    
+    texto_datos_acceso = fx_pt(texto_datos_acceso_manual)
+    
+  else:
+    
+    texto_datos_acceso = ""
+    
+---
+section: Final
+progress: 100
+continue button field: cactus_magic
+question: |
+  <div align="center">[FILE cactus_magic_star.png, 85%, Cactus Magic]  <div align="center">
+  
+  <br/>
+subquestion: |
+  <div align="justify">
+  Presiona "Enviar solicitud" para que personal de "Responsable, SA de CV" reciba tu solicitud.
+  <div align="justify">
+  <br/>
+  <br/>
+under: |
+  <br/>
+    <em>Powered by </em><strong><a href="https://www.cactuslegaltech.com/" style="color: #000000"><i/>Cactus Legal Tech</i></a></strong>.
+continue button label: |
+  Enviar solicitud  
+---
+code: |           
+  cactus_magic
+  
+  agregar_registro_sheets
+          
+  tiempo_cuestionario
+        
+  notificacion_solicitante
+  
+  notificacion_cactus
+  
+  aviso_envio_documento
+  
+  recabar_final = True
+
+
+---
+question: |
+  <div align="center">[FILE accionista.png, 30%, Info]  <div align="center">
+subquestion: |
+ <div align="justify">¿Has leído y estás de acuerdo con nuestro <u><a href='https://www.cactuslegaltech.com/aviso-de-privacidad' style="color: blue;" target="_blank">aviso de privacidad</a></u>?<div align="justify">
+ <br/>
+fields:
+  - no label: aviso_privacidad
+    input type: radio
+    choices:
+      - Sí lo he leído y estoy de acuerdo: true
+      - No estoy de acuerdo: false
+
+  - show if:
+      variable: aviso_privacidad
+      is: true
+    note: |
+      Por favor ingresa la siguiente información acerca de la persona que está solicitando ejercer derechos ARCO.
+  - Nombre completo: nombre_cliente
+    show if:
+      variable: aviso_privacidad
+      is: true
+  - Correo electrónico: email_cliente
+    datatype: email
+    show if:
+      variable: aviso_privacidad
+      is: true
+
+
+validation code: |
+
+  if aviso_privacidad == False:
+    
+    validation_error("Si no estás de acuerdo con nuestro aviso de privacidad, por favor envía un correo a bot@cactuslegaltech.com con el asunto: -Datos Personales-, explicando tu desacuerdo, para que nuestro equipo evalúe la manera en que te podamos ayudar.")
+
+
+under: |
+    
+---
+
+template: mostrar_ver_checklist
+subject: |
+  ¿Qué información necesitas para realizar esta solicitud?
+content: |
+
+  - Nombre.
+  - Identificación.
+  - Domicilio o correo electrónico.
+  - Poder (si solicita un representante).
+---
+
+template: mostrar_para_que_sirve
+subject: |
+  ¿Para qué sirve?
+content: |
+  <div align="justify">Para realizar una solicitud de ejercicio de derechos ARCO. Los Derechos ARCO son los siguientes:
+  <br/>
+  <br/>
+  - <b>Acceso</b>: Derecho mediante el cual el titular tiene derecho a solicitar y ser informado sobre sus Datos Personales, el origen de estos, el tratamiento del cual sean objeto, las cesiones realizadas o que se pretendan realizar, así como a tener acceso al aviso de privacidad al que está sujeto el tratamiento.
+  <br/>
+  <br/>
+  - <b>Rectificación</b>: Derecho mediante el cual se solicita la corrección de los datos personales por ser inexactos, incompletos, excesivos o no estar actualizados. 
+  <br/>
+  <br/>
+  - <b>Cancelación</b>: Se refiere al derecho que solicita la eliminación, supresión o borrado de los datos personales de los archivos, registros, expedientes y sistemas del particular que trate sus datos. 
+  <br/>
+  <br/>
+  - <b>Oposición</b>: Derecho mediante el cual se solicita que se concluya el tratamiento de los datos personales.
+  <br/>
+  </div align="justify">
+   
+---
+
+template: mostrar_para_quien_es
+subject: |
+  ¿Quién debe responder este cuestionario?
+content: |
+ Si quieres saber cómo se están utilizando tus datos personales, corregirlos si están incorrectos, oponerte a su uso para ciertas finalidades, solicitar su eliminación, prohibir que se usen, entre otros.
+
+
+---
+section: Inicio
+continue button label: |
+  Comenzar
+question: |
+  <div align="center">[FILE portada_solicitud_arco.png, 70%, Solicitud de ejercicio de derecho ARCO]<div align="center">
+under: |
+  <br/>
+  ${prog_disclose(mostrar_ver_checklist)}
+  ${prog_disclose(mostrar_para_que_sirve)}
+  ${prog_disclose(mostrar_para_quien_es)}
+  <br/>
+  <br/>
+  <em>Powered by </em><strong><a href="https://www.cactuslegaltech.com/"color: #000000"><i/>Cactus Legal Tech</i></a></strong>.
+  
+field: intro
+
+---
+
+code: |
+
+  notificacion_solicitante = send_email(to = email_solicitante, cc = email_cactus, template = mail_notificacion_solicitante, attachments = solicitud.pdf)
+
+---
+
+code: |
+
+  notificacion_cactus = send_email(to = email_cactus, template = mail_notificacion_cactus, attachments = solicitud.pdf)
+
+
+---
+code: |
+  email_cactus = "bot@cactuslegaltech.com"
+
+---
+
+code: |
+
+  email_prueba = "diegoflores07@gmail.com"
+
+---
+template: mail_notificacion_solicitante
+subject: |
+  ${subject_cactus}
+content: |
+  <div align="justify">Hola ${tcm(nombre_titular)},
+  <br/>
+  <br/>
+  Hemos recibido tu solicitud, misma que adjuntamos al presente acuse.
+  <br/>
+  <br/>
+  A continuación los plazos previstos para este proceso:
+  <br/>
+  <br/>
+  - Requerimiento de información adicional (en caso de que la solicitud no sea clara): 5 días hábiles.
+  <br/>
+  - Desahogo del requerimiento por parte del  de los Datos: 10 días hábiles. 
+  <br/>
+  - Respuesta a la solicitud por parte de RESPONSABLE: 20 días hábiles.
+  <br/>
+  - Respuesta a la solicitud en caso de ampliación por parte de RESPONSABLE: 40 días hábiles.
+  <br/>
+  - Plazo para hacer efectivo el derecho en caso de que resulte procedente: 15 días hábiles.
+  <br/>
+  <br/>
+  En caso de inconformidad, puede acudir al Instituto Nacional de Transparencia, Acceso a la Información y Protección de Datos Personales (INAI) o a <u style="color: blue;"><a href='www.inai.org.mx' style="color: blue;" target="_blank">su sitio web</a></u>.
+  <br/>
+  <br/>
+  Equipo de <u style="color: blue;"><a href='https://www.cactuslegaltech.com/' style="color: blue;" target="_blank">Responsable, SA de CV</a></u>. 
+  <br/>
+  <br/>
+---
+template: mail_notificacion_cactus
+subject: |
+  ${subject_cactus}
+content: |
+  Hola,
+  <br/>
+  <br/>
+  Documento: ${documento_flujo}.
+  <br/>
+  <br/>
+  % if device().is_mobile:  
+  Dispositivo: móvil.
+  % elif device().is_tablet:
+  Dispositivo: tableta.
+  % elif device().is_pc:
+  Dispositivo: PC.
+  % elif device().is_bot:
+  Dispositivo: bot.
+  % else:
+  Dispositivo: ${ device() }.
+  % endif
+  <br/>
+  <br/>
+  Aviso de privacidad: leído y aceptado.
+  <br/>
+  <br/>
+  Tiempo cuestionario: *${nice_number(tiempo_cuestionario.minutes)} minutos*.
+  <br/>
+  <br/>
+  ---
+  <b><u>Info Solicitud</b></u>
+  <br/>
+  <br/>
+  <b>Titular</b>: ${nombre_titular_y_rep}
+  <br/>
+  <br/>
+  <b>Derecho(s)</b>: ${fx_pt(capitalize(lista_derechos_ejercidos))}
+  <br/>
+  <br/>
+  <br/>
+  Atentamente,
+  <br/>
+  <br/>  
+  <u><b>Equipo de Cactus Legal Tech</b></u>
+  <br/>
+  <br/>
+
+---
+
+code: |
+  
+  if hay_representante:
+    
+    nombre_titular_y_rep = nombre_completo_titular + ", representado por " + nombre_completo_rep_titular
+    
+  else:
+    
+    nombre_titular_y_rep = nombre_completo_titular
+  
+---
+
+code: |
+  
+  subject_cactus = "Acuse Solicitud Derechos ARCO " + tcm(nombre_completo_titular)
+
+---
+back button: False
+event: aviso_envio_documento
+mandatory: True
+question: |
+  <div align="center">
+  [FILE listo_cactus.png, 20%, ${documento_flujo} Enviado]  
+subquestion: |
+  <div align="justify">
+  Hemos recibido tu solicitud, puedes descargarla presionando sobre la siguiente imagen o en el buzón de ${email_solicitante}.
+  <br/>
+  <br/>
+  ${solicitud.docx}
+  <br/>
+  <br/>
+  A continuación los plazos previstos para este proceso:
+  <br/>
+  <br/>
+  - Requerimiento de información adicional (en caso de que la solicitud no sea clara): 5 días hábiles.
+  <br/>
+  - Desahogo del requerimiento por parte del  de los Datos: 10 días hábiles. 
+  <br/>
+  - Respuesta a la solicitud por parte de RESPONSABLE: 20 días hábiles.
+  <br/>
+  - Respuesta a la solicitud en caso de ampliación por parte de RESPONSABLE: 40 días hábiles.
+  <br/>
+  - Plazo para hacer efectivo el derecho en caso de que resulte procedente: 15 días hábiles.
+  <br/>
+  <br/>
+  En caso de inconformidad, puede acudir al Instituto Nacional de Transparencia, Acceso a la Información y Protección de Datos Personales (INAI) o a <u style="color: blue;"><a href='www.inai.org.mx' style="color: blue;" target="_blank">su sitio web</a></u>.
+  <br/>
+  <br/>
+  Equipo de <u style="color: blue;"><a href='https://www.cactuslegaltech.com/' style="color: blue;" target="_blank">Responsable, SA de CV</a></u>. 
+  <br/>
+  <br/>
+under: |
+  <br/>
+  <br/>
+    
+  ${ action_button_html(url_of('restart'), label = "Reiniciar cuestionario", color = "warning", size = "md")}
+    <br/>
+---
+attachment:
+  name: Solicitud ARCO
+  filename: Solicitud ARCO ${nombre_completo_titular}
+  variable name: solicitud
+  valid formats:
+      - docx
+      - pdf
+  docx template file: solicitud_arco.docx
+
+---
+
+code: |
+
+  tiempo_cuestionario = date_difference(starting=hora_inicio, ending = current_datetime())
+
+---
+include:
+  - funciones.yml
+  - db.yml
+
+---
+features:
+  debug: False
+  labels above fields: True
+  interview help: False
+  navigation: true
+  progress bar: false
+  question back button: True
+  
+---
+event: revision_respuestas
+section: Final
+progress: 90
+question: |
+  
+  <div align="center">[FILE review.png, 45%, Revisión]<div align="center">
+   
+subquestion: |
+  <div align="justify">Por favor revisa cuidadosamente y en su caso modifica, las respuestas que has ingresado.<div align="justify">
+  
+  <br/>
+  
+review:
+    
+  - Editar: nombre_titular
+    button: |
+      Nombre: *${title_case(nombre_titular)}*
+
+under: |
+  <br/><div align="center">
+  
+  <u style="color: blue;"><i><a href='https://wa.me/523315401920' style="color: blue;" target="_blank">¿No sabes qué contestar? Contacta a un asesor.</a></u></i>    
+  <br/>
+
+
+continue button field: revision_respuestas
+continue button label: |
+    Continuar
+
+---
+
+modules:
+
+  - .google_sheets
+  
+---
+
+code: |
+
+  append_to_sheet("ejemplo_control_arco", [folio_arco_sheets, hora_recepcion_sheets, fecha_recepcion_sheets, nombre_completo_titular_sheets, tipo_id_sheets, propio_derecho_sheets, facultades_rep_sheets, domicilio_sheets, email_sheets, tipo_solicitud_sheets, tipo_resolucion_sheets, causas_improcedencia_sheets, fecha_revision_preliminar_sheets, fecha_efectiva_derecho_ejercido_sheets, fecha_notificacion_respuesta_cliente_sheets])
+
+  agregar_registro_sheets = True
+
+comment: |
+  Folio	Hora de recepción	Fecha de recepción	Nombre del Titular	Domicilio de contacto	Correo electrónico de contacto	Tipo de solicitud atendida (ARCO)	Tipo de resolución	Causas de improcedencia	Fecha de revisión preliminar	Fecha efectiva de derecho ejercido	Fecha de notificación de respuesta al cliente
+
+---
+
+code: |
+  
+  ejemplo_control_arco = read_sheet("ejemplo_control_arco", 0)
+  
+---
+
+code: |
+  folio_arco_sheets = "ARCO-2024-bla"
+  hora_recepcion_sheets = format_time(current_datetime())  
+  fecha_recepcion_sheets = format_date(today(), format='dd/MMM/yy')
+  nombre_completo_titular_sheets = nombre_completo_titular
+  domicilio_sheets = domicilio
+  email_sheets = email
+  tipo_solicitud_sheets = str(lista_derechos_ejercidos)
+  tipo_resolucion_sheets = "No procesada"
+  causas_improcedencia_sheets = ""
+  fecha_revision_preliminar_sheets = format_date(fecha_revision_preliminar_sheets, format='dd/MMM/yy')
+  fecha_efectiva_derecho_ejercido_sheets = ""
+  fecha_notificacion_respuesta_cliente_sheets = ""
+
+---
+
+code: |
+  
+  lista_derechos_ejercidos = []
+  
+  if derechos_ejercidos["acceso"]:
+    
+    lista_derechos_ejercidos.append("Acceso")
+    
+  if derechos_ejercidos["rectificacion"]:
+    
+    lista_derechos_ejercidos.append("Rectificación")
+
+  if derechos_ejercidos["cancelacion"]:
+    
+    lista_derechos_ejercidos.append("Cancelación")
+
+  if derechos_ejercidos["oposicion"]:
+    
+    lista_derechos_ejercidos.append("Oposición")
+
+  if derechos_ejercidos["revocacion"]:
+    
+    lista_derechos_ejercidos.append("Revocación")
+  
+---
+
+code: |
+  
+  fecha_revision_preliminar_sheets = today() + date_interval(days=4)
+  
+  

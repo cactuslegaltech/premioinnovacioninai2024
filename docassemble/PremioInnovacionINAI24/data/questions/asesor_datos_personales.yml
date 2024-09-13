@@ -1,0 +1,531 @@
+---
+
+comment: |
+
+  MEJORAS
+  
+  - medir tiempo
+  - lista de programas de mantenimiento anual, agregar este pq tiene los precios aquí en el file.
+  - tiempos
+  - ia: validador si no tiene nada que ver ps decir que nel.
+
+
+  - faqs_sociedades
+  - SERVANDO/EDUARDO: de qué más alimentamos al sistema? alguna doctrina, artículo, whatever?
+  - MARÍA: preguntas más frecuentes que le hacen los clientes.
+  - SERVANDO: responder y sugerir faqs: ¿Cuál es la diferencia entre una persona física y una persona moral?, ¿Qué tipo de sociedad me conviene constituir?, ¿Cuáles son los requisitos legales para constituir una empresa?, ¿Cuánto tiempo tarda el proceso de constitución?, ¿Qué obligaciones fiscales tendré como empresa?, ¿Qué es el acta constitutiva y por qué es importante?, ¿Necesito un abogado para constituir mi empresa?, ¿Cómo se distribuyen las utilidades entre los socios?, ¿Qué es el capital social y cuánto necesito para iniciar?, ¿Es obligatorio tener un domicilio fiscal?
+  - DIEGO: background task y animación de espera...
+  - FRANCESC: Sitio web en sección de sociedades.
+  - DIEGO: calcular exactamente el costo de cada consulta.
+
+---
+
+code: |
+
+  conocimiento_datos_personales = ley_datos_personales + ". " + faqs_datos_personales
+  
+---
+
+code: |
+  
+  faqs_datos_personales = "🛡️ ¿Qué derechos tengo sobre mis datos personales? Tienes el derecho a acceder, corregir, cancelar y oponerte al uso de tus datos personales. 🔍 ¿Cómo puedo saber qué datos personales tiene una empresa sobre mí? Puedes solicitar una consulta sobre tus datos personales y te proporcionaremos una copia de los datos que tenemos sobre ti. ✏️ ¿Qué debo hacer si quiero que la empresa corrija datos incorrectos sobre mí? Envía una solicitud indicando los datos erróneos y proporciona la información correcta para que procedamos a hacer la corrección. 🗑️ ¿Puedo solicitar que se eliminen todos mis datos personales de una empresa? Sí, puedes solicitar la eliminación de tus datos personales si ya no son necesarios, si retiras tu consentimiento, o si crees que están siendo usados de manera indebida. 🔄 ¿Puedo revocar mi consentimiento para el uso de mis datos personales? Sí, puedes revocar tu consentimiento en cualquier momento. Debes enviarnos una solicitud y dejaremos de usar tus datos, salvo obligaciones legales. ⚖️ ¿Cómo se puede ejercer el derecho de oposición sobre mis datos personales? Puedes enviar una solicitud indicando tu oposición a ciertos fines, como publicidad o encuestas, y ajustaremos el uso de tus datos de acuerdo con tu petición. 📜 ¿Qué es un aviso de privacidad y por qué es importante? Un aviso de privacidad te informa sobre cómo recolectamos, usamos y protegemos tus datos personales, permitiéndote tomar decisiones informadas. 📝 ¿Qué información debe contener un aviso de privacidad? El aviso de privacidad debe incluir la identidad del responsable, los tipos de datos que se recopilan, el propósito del uso, tus derechos, y cómo puedes ejercerlos. 🔐 ¿Qué medidas deben tomar las empresas para proteger mis datos personales? Implementamos medidas como encriptación de datos, controles de acceso, y políticas de seguridad para proteger tus datos contra accesos no autorizados. ✉️ ¿Qué pasos debo seguir para revocar mi consentimiento dado anteriormente para el tratamiento de mis datos? Envía una solicitud por escrito para revocar tu consentimiento. Te proporcionaremos un medio para hacerlo y dejaremos de usar tus datos. 🚨 ¿Qué pasa si mi información personal es robada o hackeada? Te informaremos de inmediato sobre el incidente, tomaremos medidas para mitigar el daño y reportaremos el incidente al INAI si es necesario. 🛠️ ¿Puedo pedir que una empresa me informe sobre cómo utilizan mis datos personales? Sí, puedes solicitar información sobre cómo usamos tus datos, incluyendo los fines y las medidas de seguridad implementadas. ⚠️ ¿Qué son los datos sensibles y cómo se deben manejar? Los datos sensibles son aquellos que pueden afectar tu privacidad significativamente, como salud o creencias religiosas. Estos datos requieren un mayor nivel de protección y solo se recogen con tu consentimiento explícito. 🌍 ¿Cómo se protegen los datos personales cuando se transfieren a otro país? Aseguramos que el país receptor tenga un nivel adecuado de protección de datos y tomamos medidas para proteger tus datos si el país no cumple con los estándares necesarios. ⌛ ¿Qué hacer si una empresa no responde a mi solicitud de acceso a mis datos? Puedes presentar una queja ante el INAI. Ellos te ayudarán a resolver la situación si no respondemos en un plazo razonable. ⚖️ ¿Qué sucede si una empresa no cumple con las leyes de protección de datos personales? Puedes presentar una queja ante el INAI. Ellos investigarán y, si hay incumplimiento, pueden imponer sanciones. 📇 ¿Qué es un dato personal según la legislación mexicana? Un dato personal es cualquier información que puede identificarte, como tu nombre, dirección, correo electrónico, o datos biométricos. 🛡️ ¿Quién es responsable de cuidar mis datos personales? Somos responsables de proteger tus datos personales y asegurar el cumplimiento de las normativas vigentes sobre su uso y tratamiento. ✍️ ¿Es necesario dar mi consentimiento para que una empresa recoja mis datos personales? Sí, generalmente necesitamos tu consentimiento para recolectar y usar tus datos personales. Este consentimiento debe ser informado. 📋 ¿Qué datos personales puede recolectar una empresa sin mi consentimiento? Necesitamos tu consentimiento para recolectar y usar tus datos personales, excepto en casos permitidos por la ley como el cumplimiento de obligaciones legales. 🔒 ¿Cómo puedo asegurarme de que una empresa proteja mis datos personales? Lee nuestro aviso de privacidad para entender cómo protegemos tus datos y qué medidas implementamos. Puedes preguntar sobre nuestras políticas de seguridad. ⛔ ¿Puedo limitar el uso de mis datos personales para fines específicos? Sí, puedes solicitar que limitemos el uso de tus datos para fines específicos, como publicidad o encuestas. Evaluaremos tu solicitud y ajustaremos el uso de tus datos. 🔐 ¿Qué medidas deben tomar las empresas para proteger mis datos personales? Implementamos medidas de seguridad como contraseñas seguras, encriptación de datos, y políticas de acceso restringido. También capacitamos a nuestros empleados en la protección de datos. 🗑️ ¿Qué pasa si la empresa no elimina mis datos personales después de solicitarlo? Puedes presentar una queja ante el INAI si no eliminamos tus datos después de tu solicitud. Ellos investigarán el caso y tomarán las acciones necesarias. 📨 ¿Qué debo hacer si la empresa comparte mis datos sin mi permiso? Si compartimos tus datos sin tu permiso, por favor, háznoslo saber. Tomaremos medidas para corregir el problema y puedes presentar una queja ante el INAI si es necesario."
+   
+---
+
+code: |
+
+  ley_datos_personales = "LEY FEDERAL DE PROTECCIÓN DE DATOS PERSONALES EN POSESIÓN DE LOS PARTICULARES CÁMARA DE DIPUTADOS DEL H. CONGRESO DE LA UNIÓN Secretaría General Secretaría de Servicios Parlamentarios Nueva Ley DOF 05-07-2010 1 de 18 LEY FEDERAL DE PROTECCIÓN DE DATOS PERSONALES EN POSESIÓN DE LOS PARTICULARES TEXTO VIGENTE Nueva Ley publicada en el Diario Oficial de la Federación el 5 de julio de 2010 Al margen un sello con el Escudo Nacional, que dice: Estados Unidos Mexicanos.- Presidencia de la República. FELIPE DE JESÚS CALDERÓN HINOJOSA, Presidente de los Estados Unidos Mexicanos, a sus habitantes sabed: Que el Honorable Congreso de la Unión, se ha servido dirigirme el siguiente DECRETO “EL CONGRESO GENERAL DE LOS ESTADOS UNIDOS MEXICANOS, DECRETA: SE EXPIDE LA LEY FEDERAL DE PROTECCIÓN DE DATOS PERSONALES EN POSESIÓN DE LOS PARTICULARES Y SE REFORMAN LOS ARTÍCULOS 3, FRACCIONES II Y VII, Y 33, ASÍ COMO LA DENOMINACIÓN DEL CAPÍTULO II, DEL TÍTULO SEGUNDO, DE LA LEY FEDERAL DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN PÚBLICA GUBERNAMENTAL. ARTÍCULO PRIMERO. Se expide la Ley Federal de Protección de Datos Personales en Posesión de los Particulares. LEY FEDERAL DE PROTECCIÓN DE DATOS PERSONALES EN POSESIÓN DE LOS PARTICULARES CAPÍTULO I Disposiciones Generales Artículo 1.- La presente Ley es de orden público y de observancia general en toda la República y tiene por objeto la protección de los datos personales en posesión de los particulares, con la finalidad de regular su tratamiento legítimo, controlado e informado, a efecto de garantizar la privacidad y el derecho a la autodeterminación informativa de las personas. Artículo 2.- Son sujetos regulados por esta Ley, los particulares sean personas físicas o morales de carácter privado que lleven a cabo el tratamiento de datos personales, con excepción de: I. Las sociedades de información crediticia en los supuestos de la Ley para Regular las Sociedades de Información Crediticia y demás disposiciones aplicables, y II. Las personas que lleven a cabo la recolección y almacenamiento de datos personales, que sea para uso exclusivamente personal, y sin fines de divulgación o utilización comercial. Artículo 3.- Para los efectos de esta Ley, se entenderá por: LEY FEDERAL DE PROTECCIÓN DE DATOS PERSONALES EN POSESIÓN DE LOS PARTICULARES CÁMARA DE DIPUTADOS DEL H. CONGRESO DE LA UNIÓN Secretaría General Secretaría de Servicios Parlamentarios Nueva Ley DOF 05-07-2010 2 de 18 I. Aviso de Privacidad: Documento físico, electrónico o en cualquier otro formato generado por el responsable que es puesto a disposición del titular, previo al tratamiento de sus datos personales, de conformidad con el artículo 15 de la presente Ley. II. Bases de datos: El conjunto ordenado de datos personales referentes a una persona identificada o identificable. III. Bloqueo: La identificación y conservación de datos personales una vez cumplida la finalidad para la cual fueron recabados, con el único propósito de determinar posibles responsabilidades en relación con su tratamiento, hasta el plazo de prescripción legal o contractual de éstas. Durante dicho periodo, los datos personales no podrán ser objeto de tratamiento y transcurrido éste, se procederá a su cancelación en la base de datos que corresponde. IV. Consentimiento: Manifestación de la voluntad del titular de los datos mediante la cual se efectúa el tratamiento de los mismos. V. Datos personales: Cualquier información concerniente a una persona física identificada o identificable. VI. Datos personales sensibles: Aquellos datos personales que afecten a la esfera más íntima de su titular, o cuya utilización indebida pueda dar origen a discriminación o conlleve un riesgo grave para éste. En particular, se consideran sensibles aquellos que puedan revelar aspectos como origen racial o étnico, estado de salud presente y futuro, información genética, creencias religiosas, filosóficas y morales, afiliación sindical, opiniones políticas, preferencia sexual. VII. Días: Días hábiles. VIII. Disociación: El procedimiento mediante el cual los datos personales no pueden asociarse al titular ni permitir, por su estructura, contenido o grado de desagregación, la identificación del mismo. IX. Encargado: La persona física o jurídica que sola o conjuntamente con otras trate datos personales por cuenta del responsable. X. Fuente de acceso público: Aquellas bases de datos cuya consulta puede ser realizada por cualquier persona, sin más requisito que, en su caso, el pago de una contraprestación, de conformidad con lo señalado por el Reglamento de esta Ley. XI. Instituto: Instituto Federal de Acceso a la Información y Protección de Datos, a que hace referencia la Ley Federal de Transparencia y Acceso a la Información Pública Gubernamental. XII. Ley: Ley Federal de Protección de Datos Personales en Posesión de los Particulares. XIII. Reglamento: El Reglamento de la Ley Federal de Protección de Datos Personales en Posesión de los Particulares. XIV. Responsable: Persona física o moral de carácter privado que decide sobre el tratamiento de datos personales. XV. Secretaría: Secretaría de Economía. XVI. Tercero: La persona física o moral, nacional o extranjera, distinta del titular o del responsable de los datos. LEY FEDERAL DE PROTECCIÓN DE DATOS PERSONALES EN POSESIÓN DE LOS PARTICULARES CÁMARA DE DIPUTADOS DEL H. CONGRESO DE LA UNIÓN Secretaría General Secretaría de Servicios Parlamentarios Nueva Ley DOF 05-07-2010 3 de 18 XVII. Titular: La persona física a quien corresponden los datos personales. XVIII. Tratamiento: La obtención, uso, divulgación o almacenamiento de datos personales, por cualquier medio. El uso abarca cualquier acción de acceso, manejo, aprovechamiento, transferencia o disposición de datos personales. XIX. Transferencia: Toda comunicación de datos realizada a persona distinta del responsable o encargado del tratamiento. Artículo 4.- Los principios y derechos previstos en esta Ley, tendrán como límite en cuanto a su observancia y ejercicio, la protección de la seguridad nacional, el orden, la seguridad y la salud públicos, así como los derechos de terceros. Artículo 5.- A falta de disposición expresa en esta Ley, se aplicarán de manera supletoria las disposiciones del Código Federal de Procedimientos Civiles y de la Ley Federal de Procedimiento Administrativo. Para la substanciación de los procedimientos de protección de derechos, de verificación e imposición de sanciones se observarán las disposiciones contenidas en la Ley Federal de Procedimiento Administrativo. CAPÍTULO II De los Principios de Protección de Datos Personales Artículo 6.- Los responsables en el tratamiento de datos personales, deberán observar los principios de licitud, consentimiento, información, calidad, finalidad, lealtad, proporcionalidad y responsabilidad, previstos en la Ley. Artículo 7.- Los datos personales deberán recabarse y tratarse de manera lícita conforme a las disposiciones establecidas por esta Ley y demás normatividad aplicable. La obtención de datos personales no debe hacerse a través de medios engañosos o fraudulentos. En todo tratamiento de datos personales, se presume que existe la expectativa razonable de privacidad, entendida como la confianza que deposita cualquier persona en otra, respecto de que los datos personales proporcionados entre ellos serán tratados conforme a lo que acordaron las partes en los términos establecidos por esta Ley. Artículo 8.- Todo tratamiento de datos personales estará sujeto al consentimiento de su titular, salvo las excepciones previstas por la presente Ley. El consentimiento será expreso cuando la voluntad se manifieste verbalmente, por escrito, por medios electrónicos, ópticos o por cualquier otra tecnología, o por signos inequívocos. Se entenderá que el titular consiente tácitamente el tratamiento de sus datos, cuando habiéndose puesto a su disposición el aviso de privacidad, no manifieste su oposición. Los datos financieros o patrimoniales requerirán el consentimiento expreso de su titular, salvo las excepciones a que se refieren los artículos 10 y 37 de la presente Ley. LEY FEDERAL DE PROTECCIÓN DE DATOS PERSONALES EN POSESIÓN DE LOS PARTICULARES CÁMARA DE DIPUTADOS DEL H. CONGRESO DE LA UNIÓN Secretaría General Secretaría de Servicios Parlamentarios Nueva Ley DOF 05-07-2010 4 de 18 El consentimiento podrá ser revocado en cualquier momento sin que se le atribuyan efectos retroactivos. Para revocar el consentimiento, el responsable deberá, en el aviso de privacidad, establecer los mecanismos y procedimientos para ello. Artículo 9.- Tratándose de datos personales sensibles, el responsable deberá obtener el consentimiento expreso y por escrito del titular para su tratamiento, a través de su firma autógrafa, firma electrónica, o cualquier mecanismo de autenticación que al efecto se establezca. No podrán crearse bases de datos que contengan datos personales sensibles, sin que se justifique la creación de las mismas para finalidades legítimas, concretas y acordes con las actividades o fines explícitos que persigue el sujeto regulado. Artículo 10.- No será necesario el consentimiento para el tratamiento de los datos personales cuando: I. Esté previsto en una Ley; II. Los datos figuren en fuentes de acceso público; III. Los datos personales se sometan a un procedimiento previo de disociación; IV. Tenga el propósito de cumplir obligaciones derivadas de una relación jurídica entre el titular y el responsable; V. Exista una situación de emergencia que potencialmente pueda dañar a un individuo en su persona o en sus bienes; VI. Sean indispensables para la atención médica, la prevención, diagnóstico, la prestación de asistencia sanitaria, tratamientos médicos o la gestión de servicios sanitarios, mientras el titular no esté en condiciones de otorgar el consentimiento, en los términos que establece la Ley General de Salud y demás disposiciones jurídicas aplicables y que dicho tratamiento de datos se realice por una persona sujeta al secreto profesional u obligación equivalente, o VII. Se dicte resolución de autoridad competente. Artículo 11.- El responsable procurará que los datos personales contenidos en las bases de datos sean pertinentes, correctos y actualizados para los fines para los cuales fueron recabados. Cuando los datos de carácter personal hayan dejado de ser necesarios para el cumplimiento de las finalidades previstas por el aviso de privacidad y las disposiciones legales aplicables, deberán ser cancelados. El responsable de la base de datos estará obligado a eliminar la información relativa al incumplimiento de obligaciones contractuales, una vez que transcurra un plazo de setenta y dos meses, contado a partir de la fecha calendario en que se presente el mencionado incumplimiento. Artículo 12.- El tratamiento de datos personales deberá limitarse al cumplimiento de las finalidades previstas en el aviso de privacidad. Si el responsable pretende tratar los datos para un fin distinto que no resulte compatible o análogo a los fines establecidos en aviso de privacidad, se requerirá obtener nuevamente el consentimiento del titular. Artículo 13.- El tratamiento de datos personales será el que resulte necesario, adecuado y relevante en relación con las finalidades previstas en el aviso de privacidad. En particular para datos personales LEY FEDERAL DE PROTECCIÓN DE DATOS PERSONALES EN POSESIÓN DE LOS PARTICULARES CÁMARA DE DIPUTADOS DEL H. CONGRESO DE LA UNIÓN Secretaría General Secretaría de Servicios Parlamentarios Nueva Ley DOF 05-07-2010 5 de 18 sensibles, el responsable deberá realizar esfuerzos razonables para limitar el periodo de tratamiento de los mismos a efecto de que sea el mínimo indispensable. Artículo 14.- El responsable velará por el cumplimiento de los principios de protección de datos personales establecidos por esta Ley, debiendo adoptar las medidas necesarias para su aplicación. Lo anterior aplicará aún y cuando estos datos fueren tratados por un tercero a solicitud del responsable. El responsable deberá tomar las medidas necesarias y suficientes para garantizar que el aviso de privacidad dado a conocer al titular, sea respetado en todo momento por él o por terceros con los que guarde alguna relación jurídica. Artículo 15.- El responsable tendrá la obligación de informar a los titulares de los datos, la información que se recaba de ellos y con qué fines, a través del aviso de privacidad. Artículo 16.- El aviso de privacidad deberá contener, al menos, la siguiente información: I. La identidad y domicilio del responsable que los recaba; II. Las finalidades del tratamiento de datos; III. Las opciones y medios que el responsable ofrezca a los titulares para limitar el uso o divulgación de los datos; IV. Los medios para ejercer los derechos de acceso, rectificación, cancelación u oposición, de conformidad con lo dispuesto en esta Ley; V. En su caso, las transferencias de datos que se efectúen, y VI. El procedimiento y medio por el cual el responsable comunicará a los titulares de cambios al aviso de privacidad, de conformidad con lo previsto en esta Ley. En el caso de datos personales sensibles, el aviso de privacidad deberá señalar expresamente que se trata de este tipo de datos. Artículo 17.- El aviso de privacidad debe ponerse a disposición de los titulares a través de formatos impresos, digitales, visuales, sonoros o cualquier otra tecnología, de la siguiente manera: I. Cuando los datos personales hayan sido obtenidos personalmente del titular, el aviso de privacidad deberá ser facilitado en el momento en que se recaba el dato de forma clara y fehaciente, a través de los formatos por los que se recaban, salvo que se hubiera facilitado el aviso con anterioridad, y II. Cuando los datos personales sean obtenidos directamente del titular por cualquier medio electrónico, óptico, sonoro, visual, o a través de cualquier otra tecnología, el responsable deberá proporcionar al titular de manera inmediata, al menos la información a que se refiere las fracciones I y II del artículo anterior, así como proveer los mecanismos para que el titular conozca el texto completo del aviso de privacidad. Artículo 18.- Cuando los datos no hayan sido obtenidos directamente del titular, el responsable deberá darle a conocer el cambio en el aviso de privacidad. No resulta aplicable lo establecido en el párrafo anterior, cuando el tratamiento sea con fines históricos, estadísticos o científicos. LEY FEDERAL DE PROTECCIÓN DE DATOS PERSONALES EN POSESIÓN DE LOS PARTICULARES CÁMARA DE DIPUTADOS DEL H. CONGRESO DE LA UNIÓN Secretaría General Secretaría de Servicios Parlamentarios Nueva Ley DOF 05-07-2010 6 de 18 Cuando resulte imposible dar a conocer el aviso de privacidad al titular o exija esfuerzos desproporcionados, en consideración al número de titulares, o a la antigüedad de los datos, previa autorización del Instituto, el responsable podrá instrumentar medidas compensatorias en términos del Reglamento de esta Ley. Artículo 19.- Todo responsable que lleve a cabo tratamiento de datos personales deberá establecer y mantener medidas de seguridad administrativas, técnicas y físicas que permitan proteger los datos personales contra daño, pérdida, alteración, destrucción o el uso, acceso o tratamiento no autorizado. Los responsables no adoptarán medidas de seguridad menores a aquellas que mantengan para el manejo de su información. Asimismo se tomará en cuenta el riesgo existente, las posibles consecuencias para los titulares, la sensibilidad de los datos y el desarrollo tecnológico. Artículo 20.- Las vulneraciones de seguridad ocurridas en cualquier fase del tratamiento que afecten de forma significativa los derechos patrimoniales o morales de los titulares, serán informadas de forma inmediata por el responsable al titular, a fin de que este último pueda tomar las medidas correspondientes a la defensa de sus derechos. Artículo 21.- El responsable o terceros que intervengan en cualquier fase del tratamiento de datos personales deberán guardar confidencialidad respecto de éstos, obligación que subsistirá aun después de finalizar sus relaciones con el titular o, en su caso, con el responsable. CAPÍTULO III De los Derechos de los Titulares de Datos Personales Artículo 22.- Cualquier titular, o en su caso su representante legal, podrá ejercer los derechos de acceso, rectificación, cancelación y oposición previstos en la presente Ley. El ejercicio de cualquiera de ellos no es requisito previo ni impide el ejercicio de otro. Los datos personales deben ser resguardados de tal manera que permitan el ejercicio sin dilación de estos derechos. Artículo 23.- Los titulares tienen derecho a acceder a sus datos personales que obren en poder del responsable, así como conocer el Aviso de Privacidad al que está sujeto el tratamiento. Artículo 24.- El titular de los datos tendrá derecho a rectificarlos cuando sean inexactos o incompletos. Artículo 25.- El titular tendrá en todo momento el derecho a cancelar sus datos personales. La cancelación de datos personales dará lugar a un periodo de bloqueo tras el cual se procederá a la supresión del dato. El responsable podrá conservarlos exclusivamente para efectos de las responsabilidades nacidas del tratamiento. El periodo de bloqueo será equivalente al plazo de prescripción de las acciones derivadas de la relación jurídica que funda el tratamiento en los términos de la Ley aplicable en la materia. Una vez cancelado el dato se dará aviso a su titular. Cuando los datos personales hubiesen sido transmitidos con anterioridad a la fecha de rectificación o cancelación y sigan siendo tratados por terceros, el responsable deberá hacer de su conocimiento dicha solicitud de rectificación o cancelación, para que proceda a efectuarla también. Artículo 26.- El responsable no estará obligado a cancelar los datos personales cuando: LEY FEDERAL DE PROTECCIÓN DE DATOS PERSONALES EN POSESIÓN DE LOS PARTICULARES CÁMARA DE DIPUTADOS DEL H. CONGRESO DE LA UNIÓN Secretaría General Secretaría de Servicios Parlamentarios Nueva Ley DOF 05-07-2010 7 de 18 I. Se refiera a las partes de un contrato privado, social o administrativo y sean necesarios para su desarrollo y cumplimiento; II. Deban ser tratados por disposición legal; III. Obstaculice actuaciones judiciales o administrativas vinculadas a obligaciones fiscales, la investigación y persecución de delitos o la actualización de sanciones administrativas; IV. Sean necesarios para proteger los intereses jurídicamente tutelados del titular; V. Sean necesarios para realizar una acción en función del interés público; VI. Sean necesarios para cumplir con una obligación legalmente adquirida por el titular, y VII. Sean objeto de tratamiento para la prevención o para el diagnóstico médico o la gestión de servicios de salud, siempre que dicho tratamiento se realice por un profesional de la salud sujeto a un deber de secreto. Artículo 27.- El titular tendrá derecho en todo momento y por causa legítima a oponerse al tratamiento de sus datos. De resultar procedente, el responsable no podrá tratar los datos relativos al titular. CAPÍTULO IV Del Ejercicio de los Derechos de Acceso, Rectificación, Cancelación y Oposición Artículo 28.- El titular o su representante legal podrán solicitar al responsable en cualquier momento el acceso, rectificación, cancelación u oposición, respecto de los datos personales que le conciernen. Artículo 29.- La solicitud de acceso, rectificación, cancelación u oposición deberá contener y acompañar lo siguiente: I. El nombre del titular y domicilio u otro medio para comunicarle la respuesta a su solicitud; II. Los documentos que acrediten la identidad o, en su caso, la representación legal del titular; III. La descripción clara y precisa de los datos personales respecto de los que se busca ejercer alguno de los derechos antes mencionados, y IV. Cualquier otro elemento o documento que facilite la localización de los datos personales. Artículo 30.- Todo responsable deberá designar a una persona, o departamento de datos personales, quien dará trámite a las solicitudes de los titulares, para el ejercicio de los derechos a que se refiere la presente Ley. Asimismo fomentará la protección de datos personales al interior de la organización. Artículo 31.- En el caso de solicitudes de rectificación de datos personales, el titular deberá indicar, además de lo señalado en el artículo anterior de esta Ley, las modificaciones a realizarse y aportar la documentación que sustente su petición. Artículo 32.- El responsable comunicará al titular, en un plazo máximo de veinte días, contados desde la fecha en que se recibió la solicitud de acceso, rectificación, cancelación u oposición, la determinación adoptada, a efecto de que, si resulta procedente, se haga efectiva la misma dentro de los quince días siguientes a la fecha en que se comunica la respuesta. Tratándose de solicitudes de acceso a datos LEY FEDERAL DE PROTECCIÓN DE DATOS PERSONALES EN POSESIÓN DE LOS PARTICULARES CÁMARA DE DIPUTADOS DEL H. CONGRESO DE LA UNIÓN Secretaría General Secretaría de Servicios Parlamentarios Nueva Ley DOF 05-07-2010 8 de 18 personales, procederá la entrega previa acreditación de la identidad del solicitante o representante legal, según corresponda. Los plazos antes referidos podrán ser ampliados una sola vez por un periodo igual, siempre y cuando así lo justifiquen las circunstancias del caso. Artículo 33.- La obligación de acceso a la información se dará por cumplida cuando se pongan a disposición del titular los datos personales; o bien, mediante la expedición de copias simples, documentos electrónicos o cualquier otro medio que determine el responsable en el aviso de privacidad. En el caso de que el titular solicite el acceso a los datos a una persona que presume es el responsable y ésta resulta no serlo, bastará con que así se le indique al titular por cualquiera de los medios a que se refiere el párrafo anterior, para tener por cumplida la solicitud. Artículo 34.- El responsable podrá negar el acceso a los datos personales, o a realizar la rectificación o cancelación o conceder la oposición al tratamiento de los mismos, en los siguientes supuestos: I. Cuando el solicitante no sea el titular de los datos personales, o el representante legal no esté debidamente acreditado para ello; II. Cuando en su base de datos, no se encuentren los datos personales del solicitante; III. Cuando se lesionen los derechos de un tercero; IV. Cuando exista un impedimento legal, o la resolución de una autoridad competente, que restrinja el acceso a los datos personales, o no permita la rectificación, cancelación u oposición de los mismos, y V. Cuando la rectificación, cancelación u oposición haya sido previamente realizada. La negativa a que se refiere este artículo podrá ser parcial en cuyo caso el responsable efectuará el acceso, rectificación, cancelación u oposición requerida por el titular. En todos los casos anteriores, el responsable deberá informar el motivo de su decisión y comunicarla al titular, o en su caso, al representante legal, en los plazos establecidos para tal efecto, por el mismo medio por el que se llevó a cabo la solicitud, acompañando, en su caso, las pruebas que resulten pertinentes. Artículo 35.- La entrega de los datos personales será gratuita, debiendo cubrir el titular únicamente los gastos justificados de envío o con el costo de reproducción en copias u otros formatos. Dicho derecho se ejercerá por el titular en forma gratuita, previa acreditación de su identidad ante el responsable. No obstante, si la misma persona reitera su solicitud en un periodo menor a doce meses, los costos no serán mayores a tres días de Salario Mínimo General Vigente en el Distrito Federal, a menos que existan modificaciones sustanciales al aviso de privacidad que motiven nuevas consultas. El titular podrá presentar una solicitud de protección de datos por la respuesta recibida o falta de respuesta del responsable, de conformidad con lo establecido en el siguiente Capítulo. CAPÍTULO V De la Transferencia de Datos LEY FEDERAL DE PROTECCIÓN DE DATOS PERSONALES EN POSESIÓN DE LOS PARTICULARES CÁMARA DE DIPUTADOS DEL H. CONGRESO DE LA UNIÓN Secretaría General Secretaría de Servicios Parlamentarios Nueva Ley DOF 05-07-2010 9 de 18 Artículo 36.- Cuando el responsable pretenda transferir los datos personales a terceros nacionales o extranjeros, distintos del encargado, deberá comunicar a éstos el aviso de privacidad y las finalidades a las que el titular sujetó su tratamiento. El tratamiento de los datos se hará conforme a lo convenido en el aviso de privacidad, el cual contendrá una cláusula en la que se indique si el titular acepta o no la transferencia de sus datos, de igual manera, el tercero receptor, asumirá las mismas obligaciones que correspondan al responsable que transfirió los datos. Artículo 37.- Las transferencias nacionales o internacionales de datos podrán llevarse a cabo sin el consentimiento del titular cuando se dé alguno de los siguientes supuestos: I. Cuando la transferencia esté prevista en una Ley o Tratado en los que México sea parte; II. Cuando la transferencia sea necesaria para la prevención o el diagnóstico médico, la prestación de asistencia sanitaria, tratamiento médico o la gestión de servicios sanitarios; III. Cuando la transferencia sea efectuada a sociedades controladoras, subsidiarias o afiliadas bajo el control común del responsable, o a una sociedad matriz o a cualquier sociedad del mismo grupo del responsable que opere bajo los mismos procesos y políticas internas; IV. Cuando la transferencia sea necesaria por virtud de un contrato celebrado o por celebrar en interés del titular, por el responsable y un tercero; V. Cuando la transferencia sea necesaria o legalmente exigida para la salvaguarda de un interés público, o para la procuración o administración de justicia; VI. Cuando la transferencia sea precisa para el reconocimiento, ejercicio o defensa de un derecho en un proceso judicial, y VII. Cuando la transferencia sea precisa para el mantenimiento o cumplimiento de una relación jurídica entre el responsable y el titular. CAPÍTULO VI De las Autoridades Sección I Del Instituto Artículo 38.- El Instituto, para efectos de esta Ley, tendrá por objeto difundir el conocimiento del derecho a la protección de datos personales en la sociedad mexicana, promover su ejercicio y vigilar por la debida observancia de las disposiciones previstas en la presente Ley y que deriven de la misma; en particular aquellas relacionadas con el cumplimiento de obligaciones por parte de los sujetos regulados por este ordenamiento. Artículo 39.- El Instituto tiene las siguientes atribuciones: I. Vigilar y verificar el cumplimiento de las disposiciones contenidas en esta Ley, en el ámbito de su competencia, con las excepciones previstas por la legislación; II. Interpretar en el ámbito administrativo la presente Ley; LEY FEDERAL DE PROTECCIÓN DE DATOS PERSONALES EN POSESIÓN DE LOS PARTICULARES CÁMARA DE DIPUTADOS DEL H. CONGRESO DE LA UNIÓN Secretaría General Secretaría de Servicios Parlamentarios Nueva Ley DOF 05-07-2010 10 de 18 III. Proporcionar apoyo técnico a los responsables que lo soliciten, para el cumplimiento de las obligaciones establecidas en la presente Ley; IV. Emitir los criterios y recomendaciones, de conformidad con las disposiciones aplicables de esta Ley, para efectos de su funcionamiento y operación; V. Divulgar estándares y mejores prácticas internacionales en materia de seguridad de la información, en atención a la naturaleza de los datos; las finalidades del tratamiento, y las capacidades técnicas y económicas del responsable; VI. Conocer y resolver los procedimientos de protección de derechos y de verificación señalados en esta Ley e imponer las sanciones según corresponda; VII. Cooperar con otras autoridades de supervisión y organismos nacionales e internacionales, a efecto de coadyuvar en materia de protección de datos; VIII. Rendir al Congreso de la Unión un informe anual de sus actividades; IX. Acudir a foros internacionales en el ámbito de la presente Ley; X. Elaborar estudios de impacto sobre la privacidad previos a la puesta en práctica de una nueva modalidad de tratamiento de datos personales o a la realización de modificaciones sustanciales en tratamientos ya existentes; XI. Desarrollar, fomentar y difundir análisis, estudios e investigaciones en materia de protección de datos personales en Posesión de los Particulares y brindar capacitación a los sujetos obligados, y XII. Las demás que le confieran esta Ley y demás ordenamientos aplicables. Sección II De las Autoridades Reguladoras Artículo 40.- La presente Ley constituirá el marco normativo que las dependencias deberán observar, en el ámbito de sus propias atribuciones, para la emisión de la regulación que corresponda, con la coadyuvancia del Instituto. Artículo 41.- La Secretaría, para efectos de esta Ley, tendrá como función difundir el conocimiento de las obligaciones en torno a la protección de datos personales entre la iniciativa privada nacional e internacional con actividad comercial en territorio mexicano; promoverá las mejores prácticas comerciales en torno a la protección de los datos personales como insumo de la economía digital, y el desarrollo económico nacional en su conjunto. Artículo 42.- En lo referente a las bases de datos de comercio, la regulación que emita la Secretaría, únicamente será aplicable a aquellas bases de datos automatizadas o que formen parte de un proceso de automatización. Artículo 43.- La Secretaría tiene las siguientes atribuciones: I. Difundir el conocimiento respecto a la protección de datos personales en el ámbito comercial; II. Fomentar las buenas prácticas comerciales en materia de protección de datos personales; LEY FEDERAL DE PROTECCIÓN DE DATOS PERSONALES EN POSESIÓN DE LOS PARTICULARES CÁMARA DE DIPUTADOS DEL H. CONGRESO DE LA UNIÓN Secretaría General Secretaría de Servicios Parlamentarios Nueva Ley DOF 05-07-2010 11 de 18 III. Emitir los lineamientos correspondientes para el contenido y alcances de los avisos de privacidad en coadyuvancia con el Instituto, a que se refiere la presente Ley; IV. Emitir, en el ámbito de su competencia, las disposiciones administrativas de carácter general a que se refiere el artículo 40, en coadyuvancia con el Instituto; V. Fijar los parámetros necesarios para el correcto desarrollo de los mecanismos y medidas de autorregulación a que se refiere el artículo 44 de la presente Ley, incluido la promoción de Normas Mexicanas o Normas Oficiales Mexicanas, en coadyuvancia con el Instituto; VI. Llevar a cabo los registros de consumidores en materia de datos personales y verificar su funcionamiento; VII. Celebrar convenios con cámaras de comercio, asociaciones y organismos empresariales en lo general, en materia de protección de datos personales; VIII. Diseñar e instrumentar políticas y coordinar la elaboración de estudios para la modernización y operación eficiente del comercio electrónico, así como para promover el desarrollo de la economía digital y las tecnologías de la información en materia de protección de datos personales; IX. Acudir a foros comerciales nacionales e internacionales en materia de protección de datos personales, o en aquellos eventos de naturaleza comercial, y X. Apoyar la realización de eventos, que contribuyan a la difusión de la protección de los datos personales. Artículo 44.- Las personas físicas o morales podrán convenir entre ellas o con organizaciones civiles o gubernamentales, nacionales o extranjeras, esquemas de autorregulación vinculante en la materia, que complementen lo dispuesto por la presente Ley. Dichos esquemas deberán contener mecanismos para medir su eficacia en la protección de los datos, consecuencias y medidas correctivas eficaces en caso de incumplimiento. Los esquemas de autorregulación podrán traducirse en códigos deontológicos o de buena práctica profesional, sellos de confianza u otros mecanismos y contendrán reglas o estándares específicos que permitan armonizar los tratamientos de datos efectuados por los adheridos y facilitar el ejercicio de los derechos de los titulares. Dichos esquemas serán notificados de manera simultánea a las autoridades sectoriales correspondientes y al Instituto. CAPÍTULO VII Del Procedimiento de Protección de Derechos Artículo 45.- El procedimiento se iniciará a instancia del titular de los datos o de su representante legal, expresando con claridad el contenido de su reclamación y de los preceptos de esta Ley que se consideran vulnerados. La solicitud de protección de datos deberá presentarse ante el Instituto dentro de los quince días siguientes a la fecha en que se comunique la respuesta al titular por parte del responsable. En el caso de que el titular de los datos no reciba respuesta por parte del responsable, la solicitud de protección de datos podrá ser presentada a partir de que haya vencido el plazo de respuesta previsto para el responsable. En este caso, bastará que el titular de los datos acompañe a su solicitud de LEY FEDERAL DE PROTECCIÓN DE DATOS PERSONALES EN POSESIÓN DE LOS PARTICULARES CÁMARA DE DIPUTADOS DEL H. CONGRESO DE LA UNIÓN Secretaría General Secretaría de Servicios Parlamentarios Nueva Ley DOF 05-07-2010 12 de 18 protección de datos el documento que pruebe la fecha en que presentó la solicitud de acceso, rectificación, cancelación u oposición. La solicitud de protección de datos también procederá en los mismos términos cuando el responsable no entregue al titular los datos personales solicitados; o lo haga en un formato incomprensible, se niegue a efectuar modificaciones o correcciones a los datos personales, el titular no esté conforme con la información entregada por considerar que es incompleta o no corresponda a la información requerida. Recibida la solicitud de protección de datos ante el Instituto, se dará traslado de la misma al responsable, para que, en el plazo de quince días, emita respuesta, ofrezca las pruebas que estime pertinentes y manifieste por escrito lo que a su derecho convenga. El Instituto admitirá las pruebas que estime pertinentes y procederá a su desahogo. Asimismo, podrá solicitar del responsable las demás pruebas que estime necesarias. Concluido el desahogo de las pruebas, el Instituto notificará al responsable el derecho que le asiste para que, de considerarlo necesario, presente sus alegatos dentro de los cinco días siguientes a su notificación. Para el debido desahogo del procedimiento, el Instituto resolverá sobre la solicitud de protección de datos formulada, una vez analizadas las pruebas y demás elementos de convicción que estime pertinentes, como pueden serlo aquéllos que deriven de la o las audiencias que se celebren con las partes. El Reglamento de la Ley establecerá la forma, términos y plazos conforme a los que se desarrollará el procedimiento de protección de derechos. Artículo 46.- La solicitud de protección de datos podrá interponerse por escrito libre o a través de los formatos, del sistema electrónico que al efecto proporcione el Instituto y deberá contener la siguiente información: I. El nombre del titular o, en su caso, el de su representante legal, así como del tercero interesado, si lo hay; II. El nombre del responsable ante el cual se presentó la solicitud de acceso, rectificación, cancelación u oposición de datos personales; III. El domicilio para oír y recibir notificaciones; IV. La fecha en que se le dio a conocer la respuesta del responsable, salvo que el procedimiento inicie con base en lo previsto en el artículo 50; V. Los actos que motivan su solicitud de protección de datos, y VI. Los demás elementos que se considere procedente hacer del conocimiento del Instituto. La forma y términos en que deba acreditarse la identidad del titular o bien, la representación legal se establecerán en el Reglamento. Asimismo, a la solicitud de protección de datos deberá acompañarse la solicitud y la respuesta que se recurre o, en su caso, los datos que permitan su identificación. En el caso de falta de respuesta sólo será necesario presentar la solicitud. En el caso de que la solicitud de protección de datos se interponga a través de medios que no sean electrónicos, deberá acompañarse de las copias de traslado suficientes. LEY FEDERAL DE PROTECCIÓN DE DATOS PERSONALES EN POSESIÓN DE LOS PARTICULARES CÁMARA DE DIPUTADOS DEL H. CONGRESO DE LA UNIÓN Secretaría General Secretaría de Servicios Parlamentarios Nueva Ley DOF 05-07-2010 13 de 18 Artículo 47.- El plazo máximo para dictar la resolución en el procedimiento de protección de derechos será de cincuenta días, contados a partir de la fecha de presentación de la solicitud de protección de datos. Cuando haya causa justificada, el Pleno del Instituto podrá ampliar por una vez y hasta por un período igual este plazo. Artículo 48.- En caso que la resolución de protección de derechos resulte favorable al titular de los datos, se requerirá al responsable para que, en el plazo de diez días siguientes a la notificación o cuando así se justifique, uno mayor que fije la propia resolución, haga efectivo el ejercicio de los derechos objeto de protección, debiendo dar cuenta por escrito de dicho cumplimiento al Instituto dentro de los siguientes diez días. Artículo 49.- En caso de que la solicitud de protección de datos no satisfaga alguno de los requisitos a que se refiere el artículo 46 de esta Ley, y el Instituto no cuente con elementos para subsanarlo, se prevendrá al titular de los datos dentro de los veinte días hábiles siguientes a la presentación de la solicitud de protección de datos, por una sola ocasión, para que subsane las omisiones dentro de un plazo de cinco días. Transcurrido el plazo sin desahogar la prevención se tendrá por no presentada la solicitud de protección de datos. La prevención tendrá el efecto de interrumpir el plazo que tiene el Instituto para resolver la solicitud de protección de datos. Artículo 50.- El Instituto suplirá las deficiencias de la queja en los casos que así se requiera, siempre y cuando no altere el contenido original de la solicitud de acceso, rectificación, cancelación u oposición de datos personales, ni se modifiquen los hechos o peticiones expuestos en la misma o en la solicitud de protección de datos. Artículo 51.- Las resoluciones del Instituto podrán: I. Sobreseer o desechar la solicitud de protección de datos por improcedente, o II. Confirmar, revocar o modificar la respuesta del responsable. Artículo 52.- La solicitud de protección de datos será desechada por improcedente cuando: I. El Instituto no sea competente; II. El Instituto haya conocido anteriormente de la solicitud de protección de datos contra el mismo acto y resuelto en definitiva respecto del mismo recurrente; III. Se esté tramitando ante los tribunales competentes algún recurso o medio de defensa interpuesto por el titular que pueda tener por efecto modificar o revocar el acto respectivo; IV. Se trate de una solicitud de protección de datos ofensiva o irracional, o V. Sea extemporánea. Artículo 53.- La solicitud de protección de datos será sobreseída cuando: I. El titular fallezca; II. El titular se desista de manera expresa; III. Admitida la solicitud de protección de datos, sobrevenga una causal de improcedencia, y LEY FEDERAL DE PROTECCIÓN DE DATOS PERSONALES EN POSESIÓN DE LOS PARTICULARES CÁMARA DE DIPUTADOS DEL H. CONGRESO DE LA UNIÓN Secretaría General Secretaría de Servicios Parlamentarios Nueva Ley DOF 05-07-2010 14 de 18 IV. Por cualquier motivo quede sin materia la misma. Artículo 54.- El Instituto podrá en cualquier momento del procedimiento buscar una conciliación entre el titular de los datos y el responsable. De llegarse a un acuerdo de conciliación entre ambos, éste se hará constar por escrito y tendrá efectos vinculantes. La solicitud de protección de datos quedará sin materia y el Instituto verificará el cumplimiento del acuerdo respectivo. Para efectos de la conciliación a que se alude en el presente ordenamiento, se estará al procedimiento que se establezca en el Reglamento de esta Ley. Artículo 55.- Interpuesta la solicitud de protección de datos ante la falta de respuesta a una solicitud en ejercicio de los derechos de acceso, rectificación, cancelación u oposición por parte del responsable, el Instituto dará vista al citado responsable para que, en un plazo no mayor a diez días, acredite haber respondido en tiempo y forma la solicitud, o bien dé respuesta a la misma. En caso de que la respuesta atienda a lo solicitado, la solicitud de protección de datos se considerará improcedente y el Instituto deberá sobreseerlo. En el segundo caso, el Instituto emitirá su resolución con base en el contenido de la solicitud original y la respuesta del responsable que alude el párrafo anterior. Si la resolución del Instituto a que se refiere el párrafo anterior determina la procedencia de la solicitud, el responsable procederá a su cumplimiento, sin costo alguno para el titular, debiendo cubrir el responsable todos los costos generados por la reproducción correspondiente. Artículo 56.- Contra las resoluciones del Instituto, los particulares podrán promover el juicio de nulidad ante el Tribunal Federal de Justicia Fiscal y Administrativa. Artículo 57.- Todas las resoluciones del Instituto serán susceptibles de difundirse públicamente en versiones públicas, eliminando aquellas referencias al titular de los datos que lo identifiquen o lo hagan identificable. Artículo 58.- Los titulares que consideren que han sufrido un daño o lesión en sus bienes o derechos como consecuencia del incumplimiento a lo dispuesto en la presente Ley por el responsable o el encargado, podrán ejercer los derechos que estimen pertinentes para efectos de la indemnización que proceda, en términos de las disposiciones legales correspondientes. CAPÍTULO VIII Del Procedimiento de Verificación Artículo 59.- El Instituto verificará el cumplimiento de la presente Ley y de la normatividad que de ésta derive. La verificación podrá iniciarse de oficio o a petición de parte. La verificación de oficio procederá cuando se dé el incumplimiento a resoluciones dictadas con motivo de procedimientos de protección de derechos a que se refiere el Capítulo anterior o se presuma fundada y motivadamente la existencia de violaciones a la presente Ley. Artículo 60.- En el procedimiento de verificación el Instituto tendrá acceso a la información y documentación que considere necesarias, de acuerdo a la resolución que lo motive. LEY FEDERAL DE PROTECCIÓN DE DATOS PERSONALES EN POSESIÓN DE LOS PARTICULARES CÁMARA DE DIPUTADOS DEL H. CONGRESO DE LA UNIÓN Secretaría General Secretaría de Servicios Parlamentarios Nueva Ley DOF 05-07-2010 15 de 18 Los servidores públicos federales estarán obligados a guardar confidencialidad sobre la información que conozcan derivada de la verificación correspondiente. El Reglamento desarrollará la forma, términos y plazos en que se sustanciará el procedimiento a que se refiere el presente artículo. CAPÍTULO IX Del Procedimiento de Imposición de Sanciones Artículo 61.- Si con motivo del desahogo del procedimiento de protección de derechos o del procedimiento de verificación que realice el Instituto, éste tuviera conocimiento de un presunto incumplimiento de alguno de los principios o disposiciones de esta Ley, iniciará el procedimiento a que se refiere este Capítulo, a efecto de determinar la sanción que corresponda. Artículo 62.- El procedimiento de imposición de sanciones dará comienzo con la notificación que efectúe el Instituto al presunto infractor, sobre los hechos que motivaron el inicio del procedimiento y le otorgará un término de quince días para que rinda pruebas y manifieste por escrito lo que a su derecho convenga. En caso de no rendirlas, el Instituto resolverá conforme a los elementos de convicción de que disponga. El Instituto admitirá las pruebas que estime pertinentes y procederá a su desahogo. Asimismo, podrá solicitar del presunto infractor las demás pruebas que estime necesarias. Concluido el desahogo de las pruebas, el Instituto notificará al presunto infractor el derecho que le asiste para que, de considerarlo necesario, presente sus alegatos dentro de los cinco días siguientes a su notificación. El Instituto, una vez analizadas las pruebas y demás elementos de convicción que estime pertinentes, resolverá en definitiva dentro de los cincuenta días siguientes a la fecha en que inició el procedimiento sancionador. Dicha resolución deberá ser notificada a las partes. Cuando haya causa justificada, el Pleno del Instituto podrá ampliar por una vez y hasta por un período igual este plazo. El Reglamento desarrollará la forma, términos y plazos en que se sustanciará el procedimiento de imposición de sanciones, incluyendo presentación de pruebas y alegatos, la celebración de audiencias y el cierre de instrucción. CAPÍTULO X De las Infracciones y Sanciones Artículo 63.- Constituyen infracciones a esta Ley, las siguientes conductas llevadas a cabo por el responsable: I. No cumplir con la solicitud del titular para el acceso, rectificación, cancelación u oposición al tratamiento de sus datos personales, sin razón fundada, en los términos previstos en esta Ley; II. Actuar con negligencia o dolo en la tramitación y respuesta de solicitudes de acceso, rectificación, cancelación u oposición de datos personales; III. Declarar dolosamente la inexistencia de datos personales, cuando exista total o parcialmente en las bases de datos del responsable; LEY FEDERAL DE PROTECCIÓN DE DATOS PERSONALES EN POSESIÓN DE LOS PARTICULARES CÁMARA DE DIPUTADOS DEL H. CONGRESO DE LA UNIÓN Secretaría General Secretaría de Servicios Parlamentarios Nueva Ley DOF 05-07-2010 16 de 18 IV. Dar tratamiento a los datos personales en contravención a los principios establecidos en la presente Ley; V. Omitir en el aviso de privacidad, alguno o todos los elementos a que se refiere el artículo 16 de esta Ley; VI. Mantener datos personales inexactos cuando resulte imputable al responsable, o no efectuar las rectificaciones o cancelaciones de los mismos que legalmente procedan cuando resulten afectados los derechos de los titulares; VII. No cumplir con el apercibimiento a que se refiere la fracción I del artículo 64; VIII. Incumplir el deber de confidencialidad establecido en el artículo 21 de esta Ley; IX. Cambiar sustancialmente la finalidad originaria del tratamiento de los datos, sin observar lo dispuesto por el artículo 12; X. Transferir datos a terceros sin comunicar a éstos el aviso de privacidad que contiene las limitaciones a que el titular sujetó la divulgación de los mismos; XI. Vulnerar la seguridad de bases de datos, locales, programas o equipos, cuando resulte imputable al responsable; XII. Llevar a cabo la transferencia o cesión de los datos personales, fuera de los casos en que esté permitida por la Ley; XIII. Recabar o transferir datos personales sin el consentimiento expreso del titular, en los casos en que éste sea exigible; XIV. Obstruir los actos de verificación de la autoridad; XV. Recabar datos en forma engañosa y fraudulenta; XVI. Continuar con el uso ilegítimo de los datos personales cuando se ha solicitado el cese del mismo por el Instituto o los titulares; XVII. Tratar los datos personales de manera que se afecte o impida el ejercicio de los derechos de acceso, rectificación, cancelación y oposición establecidos en el artículo 16 de la Constitución Política de los Estados Unidos Mexicanos; XVIII. Crear bases de datos en contravención a lo dispuesto por el artículo 9, segundo párrafo de esta Ley, y XIX. Cualquier incumplimiento del responsable a las obligaciones establecidas a su cargo en términos de lo previsto en la presente Ley. Artículo 64.- Las infracciones a la presente Ley serán sancionadas por el Instituto con: I. El apercibimiento para que el responsable lleve a cabo los actos solicitados por el titular, en los términos previstos por esta Ley, tratándose de los supuestos previstos en la fracción I del artículo anterior; LEY FEDERAL DE PROTECCIÓN DE DATOS PERSONALES EN POSESIÓN DE LOS PARTICULARES CÁMARA DE DIPUTADOS DEL H. CONGRESO DE LA UNIÓN Secretaría General Secretaría de Servicios Parlamentarios Nueva Ley DOF 05-07-2010 17 de 18 II. Multa de 100 a 160,000 días de salario mínimo vigente en el Distrito Federal, en los casos previstos en las fracciones II a VII del artículo anterior; III. Multa de 200 a 320,000 días de salario mínimo vigente en el Distrito Federal, en los casos previstos en las fracciones VIII a XVIII del artículo anterior, y IV. En caso de que de manera reiterada persistan las infracciones citadas en los incisos anteriores, se impondrá una multa adicional que irá de 100 a 320,000 días de salario mínimo vigente en el Distrito Federal. En tratándose de infracciones cometidas en el tratamiento de datos sensibles, las sanciones podrán incrementarse hasta por dos veces, los montos establecidos. Artículo 65.- El Instituto fundará y motivará sus resoluciones, considerando: I. La naturaleza del dato; II. La notoria improcedencia de la negativa del responsable, para realizar los actos solicitados por el titular, en términos de esta Ley; III. El carácter intencional o no, de la acción u omisión constitutiva de la infracción; IV. La capacidad económica del responsable, y V. La reincidencia. Artículo 66.- Las sanciones que se señalan en este Capítulo se impondrán sin perjuicio de la responsabilidad civil o penal que resulte. CAPÍTULO XI De los Delitos en Materia del Tratamiento Indebido de Datos Personales Artículo 67.- Se impondrán de tres meses a tres años de prisión al que estando autorizado para tratar datos personales, con ánimo de lucro, provoque una vulneración de seguridad a las bases de datos bajo su custodia. Artículo 68.- Se sancionará con prisión de seis meses a cinco años al que, con el fin de alcanzar un lucro indebido, trate datos personales mediante el engaño, aprovechándose del error en que se encuentre el titular o la persona autorizada para transmitirlos. Artículo 69.- Tratándose de datos personales sensibles, las penas a que se refiere este Capítulo se duplicarán. TRANSITORIOS PRIMERO.- El presente Decreto entrará en vigor al día siguiente al de su publicación en el Diario Oficial de la Federación. SEGUNDO.- El Ejecutivo Federal expedirá el Reglamento de esta Ley dentro del año siguiente a su entrada en vigor. TERCERO.- Los responsables designarán a la persona o departamento de datos personales a que se refiere el artículo 30 de la Ley y expedirán sus avisos de privacidad a los titulares de datos personales de LEY FEDERAL DE PROTECCIÓN DE DATOS PERSONALES EN POSESIÓN DE LOS PARTICULARES CÁMARA DE DIPUTADOS DEL H. CONGRESO DE LA UNIÓN Secretaría General Secretaría de Servicios Parlamentarios Nueva Ley DOF 05-07-2010 18 de 18 conformidad a lo dispuesto por los artículos 16 y 17 a más tardar un año después de la entrada en vigor de la presente Ley. CUARTO.- Los titulares podrán ejercer ante los responsables sus derechos de acceso, rectificación, cancelación y oposición contemplados en el Capítulo IV de la Ley; así como dar inicio, en su caso, al procedimiento de protección de derechos establecido en el Capítulo VII de la misma, dieciocho meses después de la entrada en vigor de la Ley. QUINTO.- En cumplimiento a lo dispuesto por el artículo tercero transitorio del Decreto por el que se adiciona la fracción XXIX-O al artículo 73 de la Constitución Política de los Estados Unidos Mexicanos, publicado en el Diario Oficial de la Federación el 30 de abril de 2009, las disposiciones locales en materia de protección de datos personales en posesión de los particulares se abrogan, y se derogan las demás disposiciones que se opongan a la presente Ley. SEXTO.- Las referencias que con anterioridad a la entrada en vigor del presente Decreto, se hacen en las leyes, tratados y acuerdos internacionales, reglamentos y demás ordenamientos al Instituto Federal de Acceso a la Información Pública, en lo futuro se entenderán hechas al Instituto Federal de Acceso a la Información y Protección de Datos Personales. SÉPTIMO.- Las acciones que, en cumplimiento a lo dispuesto en la Ley Federal de Protección de Datos Personales en Posesión de los Particulares, corresponda realizar al Ejecutivo Federal, se sujetarán a los presupuestos aprobados de las instituciones correspondientes y a las disposiciones de la Ley Federal de Presupuesto y Responsabilidad Hacendaria. OCTAVO.- El Presupuesto de Egresos de la Federación para el Ejercicio Fiscal de 2011 considerará partidas suficientes para el adecuado funcionamiento del Instituto Federal de Acceso a la Información y Protección de Datos en las materias de esta Ley. ARTÍCULO SEGUNDO. ………. TRANSITORIO ÚNICO.- El presente Decreto entrará en vigor al día siguiente al de su publicación en el Diario Oficial de la Federación. México, D.F., a 27 de abril de 2010.- Dip. Francisco Javier Ramirez Acuña, Presidente.- Sen. Carlos Navarrete Ruiz, Presidente.- Dip. Georgina Trujillo Zentella, Secretaria.- Sen. Renán Cleominio Zoreda Novelo, Secretario.- Rúbricas.” En cumplimiento de lo dispuesto por la fracción I del Artículo 89 de la Constitución Política de los Estados Unidos Mexicanos, y para su debida publicación y observancia, expido el presente Decreto en la Residencia del Poder Ejecutivo Federal, en la Ciudad de México, Distrito Federal, a veintiocho de junio de dos mil diez.- Felipe de Jesús Calderón Hinojosa.- Rúbrica.- El Secretario de Gobernación, Lic. Fernando Francisco Gómez Mont Urueta.- Rúbrica."
+  
+---
+
+include:
+
+  - funciones.yml
+  
+---
+
+initial: True
+code: |
+  
+  intro
+  
+  hora_inicio = current_datetime()
+
+  user_message 
+  
+  aviso_paciencia
+  
+  respuesta_ia
+  
+  hora_fin = current_datetime()
+    
+  mostrar_ia
+
+comment: |
+  
+  notificacion_cactus
+  
+  agregar_registro_sheets
+  
+---
+
+template: ejemplos_prompts_datos_personales
+subject: |
+  Ver ejemplos de consultas.
+content: |
+  - ¿Qué derechos tengo sobre mis datos personales?  
+  <br/>
+  - ¿Cuándo y dónde o de qué forma debo poner a disposición los avisos de privacidad?  
+  <br/>
+  - ¿Cómo puedo saber qué datos personales tiene una empresa sobre mí?  
+  <br/>
+  - ¿Puedo solicitar que se eliminen todos mis datos personales de una empresa?  
+  <br/>
+  - ¿Puedo revocar mi consentimiento para el uso de mis datos personales?  
+  <br/>
+  - ¿Qué es un aviso de privacidad y por qué es importante?  
+  <br/>
+  - ¿Qué medidas deben tomar las empresas para proteger mis datos personales?  
+  <br/>
+  - ¿Qué debo hacer si la empresa comparte mis datos sin mi permiso?  
+  <br/>
+  - ¿Qué hacer si una empresa no responde a mi solicitud de acceso a mis datos?
+  <br/>
+  
+---
+
+template: mostrar_respuesta_ia_completa
+subject: |
+  Más detalle
+content: |
+  <div align="justify">${resumen_respuesta_ia}</div align="justify">
+  <br/>
+  ${respuesta_ia}
+  <br/>
+  <br/>
+---
+
+event: mostrar_ia
+question: |
+  <div align="center">[FILE soporte.png, 25%, Soporte]<div align="center"></div>
+subquestion: |
+  ${resumen_respuesta_ia}
+  <br/>
+  <br/>
+  ${prog_disclose(mostrar_respuesta_ia_completa)}
+  <br/>
+  <style>
+  /* Button Styling */
+  .custom-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #25522e;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    font-family: Arial, sans-serif;
+  }
+
+  .custom-button i {
+    margin-right: 8px;
+  }
+
+  .custom-button:hover {
+    background-color: #6bb556;
+    color: white;
+    transform: scale(1.05);
+  }
+
+  /* Square or Rectangular Shape */
+  .custom-button.square {
+    padding: 10px;
+  }
+
+  .custom-button.rectangle {
+    padding: 10px 30px;
+  }
+  </style>
+
+  <!-- HTML with Font Awesome Icons -->
+  <button class="custom-button rectangle" onclick="Solicitud()">
+  ⚖️ Solicitar ejercicio de derecho ARCO
+  </button>  
+  <button class="custom-button rectangle" onclick="contactAbogado()">
+  💬 Envíanos un Whatsapp
+  </button>
+  <button class="custom-button square" onclick="copyDetalle()">
+  <i class="fas fa-paste"></i> Copiar respuesta completa
+  </button>
+  <br/>
+  <!-- New Button with Legal Book Icon -->
+  <button class="custom-button rectangle" onclick="window.open('https://www.diputados.gob.mx/LeyesBiblio/pdf/LFPDPPP.pdf', '_blank')">
+  <i class="fas fa-book"></i> Ley Federal de Protección de Datos Personales en Posesión de los Particulares
+  </button>
+  <br/>
+  <script>
+  function copyResumen() {
+  var copyText = `${resumen_respuesta_ia}`;
+  navigator.clipboard.writeText(copyText).then(function() {
+    alert('Texto copiado al portapapeles');
+  }, function(err) {
+    alert('Error al copiar texto: ' + err);
+  });
+  }
+
+  function copyDetalle() {
+  var copyText = `${respuesta_ia}`;
+  navigator.clipboard.writeText(copyText).then(function() {
+    alert('Texto copiado al portapapeles');
+  }, function(err) {
+    alert('Error al copiar texto: ' + err);
+  });
+  }
+
+  function contactAbogado() {
+  window.open('https://wa.me/523317214352', '_blank');
+  }
+
+  function Solicitud() {
+  window.open('https://apps.cactuslegaltech.com/interview?i=docassemble.playground4inai:solicitud_ejercicio_arco.yml', '_blank');
+  }
+  </script>
+
+  <div style="font-size: small; text-align: justify;"><i>${disclaimer_consulta_ia_html}</i></div>
+  <br/>
+
+buttons:
+  - Hacer otra consulta: new_session
+under: |
+  
+
+---
+
+
+code: |
+
+  import re
+
+  disclaimer_consulta_ia = (
+    "La respuesta a la consulta ha sido generada por nuestro sistema de Inteligencia Artificial y está sujeta a revisión. "
+    "La opinión podría variar según cambios en la información proporcionada o novedades pendientes a ser alimentadas al sistema. "
+    "Confirma detalles o aclara cualquier duda con un representante de nuestro equipo vía Whatsapp "
+    "______ o enviando un correo a _________."
+  )
+
+  # Convert the WhatsApp link to HTML format with the text "presionando aquí"
+  disclaimer_consulta_ia_html = re.sub(
+    r"https://wa\.me/\S+",
+    r'<a href="">presionando aquí</a>',
+    disclaimer_consulta_ia
+  )
+
+  # Convert the email address to a mailto link
+  disclaimer_consulta_ia_html = re.sub(
+    r"(\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b)",
+    r'<a href="mailto:\1">\1</a>',
+    disclaimer_consulta_ia_html
+  )
+
+---
+
+code: |
+
+  instruccion = "Haz un resumen de un renglón de la siguiente información: " + respuesta_ia
+ 
+  resumen_respuesta_ia = chat_completion(
+    instruccion,
+    user_message = instruccion,
+    temperature=0,
+    # The following are optional parameters shown for demonstration purposes
+    model="gpt-4o",
+    json_mode=False,
+  )
+
+---
+
+code: |
+  
+  practicas_uso_aviso_privacidad = "Integral: Contenido: • Identidad y domicilio del responsable • Finalidades del tratamiento • Mecanismos para manifestar la negativa al tratamiento de finalidades secundarias • Datos personales tratados • Datos personales sensibles que se traten • Transferencias • Cláusula de aceptación o rechazo a las transferencias (cuando aplique) • Medios y procedimiento para ejercer los derechos ARCO • Cláusula de revocación de consentimiento • Opciones y medios para limitar el uso o divulgación de datos personales • Uso de tecnologías de rastreo • Procedimientos y medios para comunicar cambios en el Aviso de Privacidad. Medios de difusión: • Formato impreso • Electrónico o digital • Óptico o visual • Sonoro • Cualquier otra tecnología. Puesta a disposición: Previo a la obtención de los datos personales. Obtención de Datos Personales: Directa o personal (antes de que este último le proporcione su información personal a través del formato o medio respectivo). Simplificado: Contenido: • Identidad y domicilio del responsable • Finalidades del tratamiento • Procedimientos y medios para comunicar cambios en el Aviso de Privacidad. Medios de difusión: Al primer contacto con el titular. Puesta a disposición: • Al primer contacto con el titular (para obtención directa) • Previo al aprovechamiento de los datos personales (para obtención indirecta). Obtención de Datos Personales: • Directa: El tratamiento para el cual serán utilizados involucra el contacto directo o personal con el titular • Indirecta: El tratamiento para el cual serán utilizados no requiere contacto personal o directo con el titular. Corto: Contenido: • Identidad y domicilio del responsable • Finalidades del tratamiento • Procedimientos y medios para comunicar cambios en el Aviso de Privacidad. Medios de difusión: • Formato impreso • Electrónico o digital • Óptico o visual • Sonoro • Cualquier otra tecnología. Puesta a disposición: Cuando el espacio para la obtención de los datos es mínimo y limitado y los datos recolectados también son mínimos."
+  
+---
+
+code: |
+
+  contexto_aplicable = prompt_fundamentacion + conocimiento_datos_personales + avisos_privacidad + ". Prácticas uso de Avisos de Privacidad: " + practicas_uso_aviso_privacidad
+ 
+  respuesta_ia = chat_completion(
+    contexto_aplicable,
+    user_message,
+    temperature=0,
+    # The following are optional parameters shown for demonstration purposes
+    model="gpt-4-turbo",
+    json_mode=False,
+    )
+
+
+---
+
+code: |
+
+  avisos_privacidad = "Visitante: Persona que visita nuestras instalaciones o plataforma digital. Datos personales: Cualquier información que identifica o hace identificable a una persona física, como su nombre, edad, su correo electrónico, etc. Recopilamos datos personales cuando el/la Titular nos los proporciona a través de medios para cumplir con las finalidades descritas en este Aviso de Privacidad. Datos sensibles: Datos relacionados con la esfera más íntima de la persona y que, si se usan indebidamente, pueden causar discriminación o un riesgo grave (origen racial o étnico, salud, información genética, creencias religiosas o filosóficas, afiliación sindical, opiniones políticas y orientación sexual). Finalidades primarias: Son las razones por las que solicitamos tus datos personales para establecer la relación entre la empresa y el Titular. Finalidades secundarias: Son aquellas finalidades que, aunque no son esenciales para la relación entre la empresa y el Titular, contribuyen al cumplimiento del objeto social de la empresa. Transferencias de datos personales: Toda comunicación de datos personales a personas distintas del responsable o del encargado del tratamiento, ya sean nacionales o extranjeros. Consentimiento para transferencia de datos personales: Informamos que sus datos personales no serán transferidos sin su consentimiento, salvo en los casos permitidos por la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP) y conforme a las condiciones de su reglamento. Cliente: Persona que adquiere productos o servicios, ya sea en nuestra sucursal o en nuestra plataforma de comercio electrónico. Datos personales: Cualquier información que identifica o hace identificable a una persona física, como su nombre, edad, su correo electrónico, etc. Recopilamos datos personales cuando el/la Titular nos los proporciona a través de medios para cumplir con las finalidades descritas en este Aviso de Privacidad. Datos sensibles: Datos relacionados con la esfera más íntima de la persona y que, si se usan indebidamente, pueden causar discriminación o un riesgo grave (origen racial o étnico, salud, información genética, creencias religiosas o filosóficas, afiliación sindical, opiniones políticas y orientación sexual). Finalidades primarias: Son las razones por las que solicitamos tus datos personales para establecer la relación entre la empresa y el Titular. Finalidades secundarias: Son aquellas finalidades que, aunque no son esenciales para la relación entre la empresa y el Titular, contribuyen al cumplimiento del objeto social de la empresa. Transferencias de datos personales: Toda comunicación de datos personales a personas distintas del responsable o del encargado del tratamiento, ya sean nacionales o extranjeros. Consentimiento para transferencia de datos personales: Informamos que sus datos personales no serán transferidos sin su consentimiento, salvo en los casos permitidos por la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP) y conforme a las condiciones de su reglamento. Proveedor: Entidad (representada por una persona física) o persona que proporciona productos o servicios especializados para satisfacer las necesidades operativas de nuestra organización. Datos personales: Cualquier información que identifica o hace identificable a una persona física, como su nombre, edad, su correo electrónico, etc. Recopilamos datos personales cuando el/la Titular nos los proporciona a través de medios para cumplir con las finalidades descritas en este Aviso de Privacidad. Datos sensibles: Datos relacionados con la esfera más íntima de la persona y que, si se usan indebidamente, pueden causar discriminación o un riesgo grave (origen racial o étnico, salud, información genética, creencias religiosas o filosóficas, afiliación sindical, opiniones políticas y orientación sexual). Finalidades primarias: Son las razones por las que solicitamos tus datos personales para establecer la relación entre la empresa y el Titular. Finalidades secundarias: Son aquellas finalidades que, aunque no son esenciales para la relación entre la empresa y el Titular, contribuyen al cumplimiento del objeto social de la empresa. Transferencias de datos personales: Toda comunicación de datos personales a personas distintas del responsable o del encargado del tratamiento, ya sean nacionales o extranjeros. Consentimiento para transferencia de datos personales: Informamos que sus datos personales no serán transferidos sin su consentimiento, salvo en los casos permitidos por la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP) y conforme a las condiciones de su reglamento. Candidatura a empleo: Persona que se postula para integrarse a nuestro equipo. Datos personales: Cualquier información que identifica o hace identificable a una persona física, como su nombre, edad, su correo electrónico, etc. Recopilamos datos personales cuando el/la Titular nos los proporciona a través de medios para cumplir con las finalidades descritas en este Aviso de Privacidad. Datos sensibles: Datos relacionados con la esfera más íntima de la persona y que, si se usan indebidamente, pueden causar discriminación o un riesgo grave (origen racial o étnico, salud, información genética, creencias religiosas o filosóficas, afiliación sindical, opiniones políticas y orientación sexual). Finalidades primarias: Son las razones por las que solicitamos tus datos personales para establecer la relación entre la empresa y el Titular. Finalidades secundarias: Son aquellas finalidades que, aunque no son esenciales para la relación entre la empresa y el Titular, contribuyen al cumplimiento del objeto social de la empresa. Transferencias de datos personales: Toda comunicación de datos personales a personas distintas del responsable o del encargado del tratamiento, ya sean nacionales o extranjeros. Consentimiento para transferencia de datos personales: Informamos que sus datos personales no serán transferidos sin su consentimiento, salvo en los casos permitidos por la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP) y conforme a las condiciones de su reglamento. Aviso de Privacidad Integral: Identidad y domicilio del responsable. Responsable del tratamiento de los datos personales proporcionados, según el perfil del Titular y el contenido de este Aviso de Privacidad. Medios para el ejercicio de derechos ARCO y revocación del consentimiento: El/la Titular o su representante legal podrán ejercer cualquiera de los derechos de acceso, rectificación, cancelación u oposición, también conocidos como derechos ARCO, así como revocar su consentimiento para el tratamiento de sus datos. Los plazos para la atención del ejercicio de derechos ARCO, así como la revocación de consentimiento son los siguientes: Opciones y medios para limitar el uso o divulgación de los datos personales: El/la Titular podrá limitar el uso o divulgación de sus datos personales haciendo su solicitud vía correo electrónico. Uso de Cookies: Para proporcionar una experiencia óptima en nuestra plataforma, usamos cookies propias y de terceros. Cambios al aviso de privacidad: Nos reservamos el derecho de efectuar modificaciones o actualizaciones al presente aviso de privacidad en cualquier momento. Consentimiento: Al continuar navegando en nuestro sitio web, el/la Titular manifiesta conocer el contenido del presente Aviso de Privacidad y consciente el tratamiento de sus datos personales y financieros. Circuito de videovigilancia: Área video vigilada, con domicilio para oír y recibir notificaciones, informa que sus datos personales son tratados a través de nuestro sistema de video vigilancia para finalidades de vigilancia y seguridad de las instalaciones y de las personas presentes. Aviso de privacidad corto: Tratará sus datos para las finalidades descritas. Le invitamos a conocer nuestro aviso de privacidad integral en nuestra web. Aviso de privacidad simplificado: Sus datos serán usados para las finalidades descritas en nuestro aviso de privacidad integral. En caso de no oponerse, sus datos se usarán para finalidades adicionales."
+  
+---
+
+code: |
+  
+  prompt_fundamentacion = "CONTEXTO Y MISIÓN: Eres un sistema de inteligencia artificial que trabaja el Instituto Nacional de Acceso a la Información (INAI) en México y tiene experiencia ofreciendo apoyo en materia de datos personales. Además conoces muy bien la Ley Federal de Protección de Datos Personales en Posesión de los Particulares. Fuiste entrenado por los mejores abogados. Además, eres bueno explicando y comunicando el derecho y sus procesos con claridad y con un nivel fácil de entender para cualquier persona mayor de 12 años que no sea abogada. Si tu respuesta la obtienes de la ley, debes fundamentar tu respuesta, esto es, referir el artículo y fracción en su caso, del cual se obtuvo el dato y transcribir exactamente igual el texto del artículo. Si tu respuesta la obtuviste de diferentes artículos o referencias, debes indicar el artículo para cada uno de los datos o párrafos que brindas en tu respuesta. O sea incluir siempre el artículo y en su caso, la fracción aplicable. Si no cuentas con fundamento/artículo o con la respuesta, dile al usuario que no cuentas con ese conocimiento. Si la consulta es acerca de algo que no tiene que ver con sociedades, decirle que no lo podemos ayudar, pero que presione en " + url_whatsapp_responsable + " para contactar a un integrante del equipo."
+
+---
+
+code: |
+  
+  url_whatsapp_responsable = ""
+  
+---
+
+event: enviar_consulta
+
+code: |
+
+  email_sent_ok = send_email(to = mail_usuario, cc = email_cactus, template = mail_consulta)
+
+---
+
+code: |
+
+  notificacion_cactus = send_email(to = email_cactus, template = mail_notificacion_cactus)
+
+---
+
+code: |
+  
+  email_cactus = "bot@cactuslegaltech.com"
+
+  
+---
+template: mail_notificacion_cactus
+subject: |
+  ${asunto_mail}
+content: |  
+  Consulta: <i>${fx_pt(user_message)}</i>
+  <br/>
+  <br/>
+  Respuesta: ${fx_pt(respuesta_ia)}
+  <br/>
+  <br/>
+  % if user_logged_in():
+  Usuario: ${user_info().email}.
+  % endif
+
+---
+
+code: |
+  
+  asunto_mail = "Consulta IA Datos Personales - " + capitalize(asunto_consulta)
+
+---
+
+code: |
+
+  prompt_asunto_consulta = "Tu misión es extraer únicamente el asunto principal acerca de la siguiente consulta: " + user_message + ". Ej. si la consulta dice que le des información de venta de terrenos, el asunto debería ser Terreno. No le pongas punto al final, solo el asunto principal"
+  
+  asunto_consulta = chat_completion(
+    prompt_asunto_consulta,
+    user_message,
+    temperature=0,
+    # The following are optional parameters shown for demonstration purposes
+    model="gpt-3.5-turbo",
+    json_mode=False,
+    )
+
+---
+back button label: |
+  Atrás
+continue button label: |
+  Consultar IA
+question: |
+  <div align="center">[FILE soporte.png, 30%, Soporte]<div align="center">
+
+subquestion: |
+
+  Ingresa tu(s) duda(s).
+  <br/>
+  <br/>
+  ${prog_disclose(ejemplos_prompts_datos_personales)}
+  
+  
+fields:
+
+  - no label: user_message
+    datatype: area
+    hint: |
+      Tengo muchas dudas, ¿qué derechos tengo sobre mis datos personales?, ¿cómo puedo saber qué datos personales tiene una empresa sobre mí?, ¿puedo solicitar que se eliminen todos mis datos personales de una empresa?
+    rows: 6
+  - note: |
+      <i>Nombres o datos reales no son necesarios para este análisis</i>.
+
+
+---
+continue button label: |
+  Consultar IA
+question: |
+  <div align="center">[FILE aviso_paciencia.png, 20%, Aviso Paciencia]<div align="center">
+subquestion: |
+  <div align="justify">Nos tomará alrededor de un minuto analizar tu consulta. Presiona "Consultar IA" si estás de acuerdo en esperar ese tiempo.
+  <br/></div align="justify">
+  <br/>
+under: |
+  
+   
+field: aviso_paciencia
+
+---
+continue button label: |
+  Iniciar consulta
+question: |
+  <div align="center">[FILE portada_ia_datos_personales.png, 40%, Portada]<div align="center">
+subquestion: |
+  ${prog_disclose(explicacion_entrenamiento)}
+under: |
+  
+   
+field: intro
+
+---
+
+template: explicacion_entrenamiento
+subject: |
+  ¿Para que sirve esta herramienta?
+content: |
+  <div align="justify">Esta herramienta consiste en un sistema de inteligencia artificial entrenado para responder consultas en materia de datos personales. Para ello, nuestro equipo la entrenó con el siguiente conocimiento:
+  <br/>
+  <br/>
+  1. Ley Federal de Protección de Datos Personales en Posesión de los Particulares
+  <br/>
+  <br/>
+  2. Avisos de privacidad de [nombre comercial].
+  <br/>
+  <br/>
+  3. Experiencia y conocimiento de nuestros abogados.
+  <br/>
+  <br/>
+  4. Preguntas frecuentes de nuestra comunidad y del público general.
+  <br/>
+  <br/>
+  5. Tips y prácticas para brindar un buen servicio y experiencia al usuario.</div align="justify">
+  <br/>
+
+---
+
+modules:
+
+  - docassemble.ALToolbox.llms
+  - .progressivedisclosure
+  - .google_sheets
+
+---
+
+features:
+
+  css: progressivedisclosure.css
+  
+---
+metadata:
+  back button label: |
+    Deshacer
+  help label: |
+    Ayuda
+  continue button label: |
+    Continuar
+    
+---
+
+features:
+
+  css: cactus.css
+  
+---
+code: |
+
+  tiempo_cuestionario = date_difference(starting=hora_inicio, ending = hora_fin)
+
+---
+
+features:
+
+  debug: false
+  labels above fields: True
+  navigation: true
+  sections: false
+  progress bar: false
+  question back button: True
+
+---
+
+metadata:
+
+  title: |
+    
+  short title: |
+    
+  show login: False 
+  exit label: |
+    
+  logo: |
+    
+  description: |
+    Este archivo tiene la finalidad de auxiliar con al público general e internamente en materia de sociedades mercantiles.
+  authors:
+    - name: Diego Flores O 
+      organization: Cactus Legal Tech 
+
+---
+
+code: |
+
+  append_to_sheet("", [fecha_generacion, documento_flujo, empresa, no_acto, nice_number(tiempo_cuestionario.minutes), user_info().email, extracto])
+  
+  agregar_registro_sheets = True
+  
+---
+
+code: |
+  
+  uso_flujos_n3_c38 = read_sheet("", 0)
+  
+---
+
+code: |
+  hora_generacion_sheets = format_time(current_datetime())  
+  fecha_generacion = hora_generacion_sheets + " - " + format_date(today(), format='dd/MMM/yy')
+  empresa = "C38"
+  no_acto = "N/A"
+  documento_flujo = asunto_mail
+  extracto = "Asunto: " + asunto_consulta + ", Mensaje usuario: " + user_message + ", Respuesta IA: " + fx_pt(respuesta_ia)
+
+
+
+  
+---
+default validation messages:
+  required: |
+    Ingresa una respuesta.
+  multiple choice required: |
+    Selecciona una opción.
+  date: |
+    Ingresa una fecha válida.
+  email: |
+    Ingresa una dirección válida de correo electrónico.
+  number: |
+    Ingresa un número.
+  combobox required: |
+    Selecciona o ingresa una respuesta.
+
+
+  

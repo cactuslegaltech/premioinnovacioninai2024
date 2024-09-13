@@ -1,0 +1,17 @@
+/* Initially, hide the closed arrow and show the open arrow */
+a span.pdcaretclosed {
+    display: none;
+}
+
+a span.pdcaretopen {
+    display: inline;
+}
+
+/* When the link has the 'collapsed' class, hide the open arrow and show the closed arrow */
+a.collapsed span.pdcaretopen {
+    display: none;
+}
+
+a.collapsed span.pdcaretclosed {
+    display: inline;
+}

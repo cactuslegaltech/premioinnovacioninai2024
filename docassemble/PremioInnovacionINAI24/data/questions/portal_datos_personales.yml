@@ -1,0 +1,1043 @@
+---
+
+comment: |
+  
+  MEJORAS:
+
+    a. ALIMENTAR ESTO A LA IA: ajustar instrucciones finales para uso y colocación correcto de AP.
+    b. poner instrucciones de uso y colocación de forma accesible.
+
+    d. cara responsable: botón a excel, consulta IA (siempre al final ofrecer datos de inai para contactar y resolver duda), etc.
+    
+    
+    c. shinear genera tu aviso de privacidad.
+  
+  2. planear guion de video.
+  - énfasis en que funciona para móvil. hacer enlaces verdes móvil.
+  
+  - se abran programas de botones generar aviso y así en diferente pestaña.
+  - aviso que sea por inventario de datos de id, contacto, fiscales, etc. para que impacte menos.
+  - categorizar primarias y secundarias.
+  - videograbación conforme ley españona
+  - tblita de como usar avisos para el cliente guía de uso. guía rápida de derechos arco al interior.
+  - que portal identifique secciones públicas y secciones internas. 
+  - los deje explorar interno y externo. crear portal público e interno. aunque no permita interactuar.
+  - ARCOr en minúscula
+  - juntar definición ejemplo en derechos ARCOR.
+  - en caso de menores, abrir segundo campo para el tutor. preguntar si es mayor de edad.
+  - en lugar de ninguna de las anteriores, dar opción de otra y recibir el mensaje con los brazos abiertos.
+  
+  - yml. de quejas y sugerencias: que IA les responda algo coherente y adaptado al caso compartido que desincentive al procedimiento ante inai.
+  - esqueleto Consulta IA.
+  - comentar todo para que cualquier le entienda
+  - armarme un text file explicando todo el rollo y subirlo a git con apoyo de Quinten o como zip a sitio we cactus.
+  - IA te muestre el link para quejas si te quieres quejar.
+  - Si aún no te queda claro, presiona aquí para consultar a nuestra Inteligencia Artificial. de derechos ARCOR
+  
+  DIEGO:
+  
+  - revisar checklist de uso responsable de IA
+  - shinear programa aviso de privacidad
+  - shinear programa Solicitud de ejercicio arco
+  
+  VERO:
+
+  - agregar imágenes o íconos a aviso corto e integral y dar formato justificado, ya que me pase uno bonito que no de pena.
+  - faq´s aviso de privacidad
+  - faqs general datos personales
+  - ayude a revisar checklist de uso responsable de IA
+  - listado enseñanaza material
+  - cambiamos nombre a Portal de Seguridad de Información? o Portal de Privacidad y Seguridad de Información?
+  - y si usamos como caso real a algún cliente tuyo que se quiera parar el cuello ante el INAI? es que me aviso y mi política y mi todo están bn chafas jajaj o me ayudas inventándote una política y blabla o le cambiamos nombres y ya...
+  
+  DUDAS:
+
+  - formato o guía para darse de alta en sistema nacional de exclusión?
+
+  REALIZADOS:
+
+  - ligar tmb teléfono de contacto para que en móvil jale marcar.
+  - que botones de contacto se abran en pantallas diferentes.
+  - migrar a este paquete la solicitud de arco.
+
+---
+
+code: |
+  
+  texto_relacion_visitante = ""
+  
+---
+
+initial: True
+code: |
+  
+  portal_datos_personales
+
+---
+
+template: mostrar_recursos
+subject: |
+  Recursos
+content: |
+  ${prog_disclose(mostrar_faqs)}
+  ${prog_disclose(mostrar_ensenaza)}
+  ${prog_disclose(mostrar_acerca_de)}
+
+  <style>
+  .custom-button {
+      border: 1px solid;
+      padding: 6px 12px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  }
+
+  .custom-button:hover {
+      background-color: #25522e; /* Dark green on hover */
+      color: #fff; /* Ensure text turns white on hover */
+  }
+  </style>
+
+  <button class="custom-button" onclick="window.location.href='https://apps.cactuslegaltech.com/interview?i=docassemble.playground4inai:asesor_datos_personales.yml'">
+  &#x1F916; Consultar IA
+  </button>
+
+  <button class="custom-button" onclick="window.location.href='https://wa.me/523315401920'">
+  &#x1F4AD; Quejas y sugerencias
+  </button>
+
+  <button class="custom-button" onclick="window.location.href='https://apps.cactuslegaltech.com/interview?i=docassemble.playground4todos:aviso_privacidad.yml'">
+  &#x1F4C4; Genera tu aviso de privacidad
+  </button>
+
+
+
+---
+
+template: mostrar_finalidades_visitante
+subject: |
+  a) Visitante
+content: |  
+  <div align="justify"><b>Visitante</b>: Persona que visita nuestras instalaciones [<mark style="background-color: yellow;">describir tipo de instalaciones</mark>] o plataforma digital.
+  <br/>
+  <br/>
+  <b>Datos personales</b>
+  <br/>
+  <br/>
+  Cualquier información que identifica o hace identificable a una persona física, como su nombre, edad, su correo electrónico, etc.
+  <br/>
+  <br/>
+  [<mark style="background-color: yellow;">Nombre comercial</mark>] recopila datos personales cuando el/la Titular nos los proporciona a través de medios [<mark style="background-color: yellow;">describir los medios a través de los cuales, se recolectan datos de visitantes</mark>] para cumplir con las finalidades descritas en este Aviso de Privacidad.
+  <br/>
+  <br/>
+  •	Dato
+  <br/>
+  •	Dato
+  <br/>
+  •	Dato
+  <br/>
+  <br/>
+  <b>Datos sensibles</b>
+  <br/>
+  <br/>
+  Datos relacionados con la esfera más íntima de la persona y que, si se usan indebidamente, pueden causar discriminación o un riesgo grave. (Origen racial o étnico, salud, información genética, creencias religiosas o filosóficas, afiliación sindical, opiniones políticas y orientación sexual).
+  <br/>
+  <br/>
+  [<mark style="background-color: yellow;">Nombre comercial</mark>] [<mark style="background-color: yellow;">definir si se recolectan y tratan datos personales sensibles de sus visitantes, en caso de ser así, indicarlos</mark>].
+  <br/>
+  <br/>
+  <b>Finalidades primarias</b>
+  <br/>
+  <br/>
+  Son las razones por las que solicitamos tus datos personales se establece la relación entre [<mark style="background-color: yellow;">Nombre comercial</mark>] y el Titular.
+  <br/>
+  <br/>
+  •	Describir finalidad
+  <br/>
+  •	Describir finalidad
+  <br/>
+  <br/>
+  <b>Finalidades secundarias</b>
+  <br/>
+  <br/>
+  Son aquellas finalidades que, aunque no son esenciales para la relación entre [<mark style="background-color: yellow;">Nombre comercial</mark>] y el Titular, pero que con su tratamiento contribuye al cumplimiento del objeto social de [<mark style="background-color: yellow;">Nombre comercial</mark>]
+  <br/>
+  <br/>
+  •	Describir finalidad
+  <br/>
+  •	Describir finalidad
+  <br/>
+  <br/>
+  <b>Transferencias de datos personales</b>
+  <br/>
+  <br/>
+  Toda comunicación de datos personales a personas distintas del responsable o del encargado del tratamiento, ya sean nacionales o extranjeros.
+  <br/>
+  <br/>
+  Para cumplir con las finalidades mencionadas y otras exigidas legalmente o por autoridades competentes mediante solicitud fundada y motivada, se realizarán las siguientes transferencias de sus datos personales:
+  <br/>
+  <br/>
+  <table style="width:100%; border-collapse: collapse; text-align: center;">
+  <tr style="background-color: #25522e; color: white; font-weight: bold;">
+    <th style="border: 1px solid black; padding: 8px;">#</th>
+    <th style="border: 1px solid black; padding: 8px;">Terceros Receptores<br>(Identidad o Categoría)</th>
+    <th style="border: 1px solid black; padding: 8px;">Finalidades de la Transferencia</th>
+    <th style="border: 1px solid black; padding: 8px;">¿Requiere Consentimiento?</th>
+  </tr>
+  <tr style="background-color: #f2f2f2;">
+    <td style="border: 1px solid black; padding: 8px;">1</td>
+    <td style="border: 1px solid black; padding: 8px;">Nombre o categoría del tercero receptor (ej. Instituciones bancarias, aseguradoras)</td>
+    <td style="border: 1px solid black; padding: 8px;">Describir la finalidad (ej. Procesar pagos, gestionar seguros)</td>
+    <td style="border: 1px solid black; padding: 8px;">Seleccione "Sí" o "No" (si aplica el artículo 37, seleccione "No")</td>
+  </tr>
+  </table>
+  <br/>
+  <b>Consentimiento para transferencia de datos personales</b>
+  <br/>
+  <br/>
+  [<mark style="background-color: yellow;">Nombre comercial</mark>] informa que sus datos personales no serán transferidos sin su consentimiento, salvo en los casos permitidos por el Artículo 37 de la <a href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LFPDPPP.pdf" target="_blank" style="color: #25522e;">Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP)</a> y conforme a las condiciones del Artículo 17 de su reglamento.
+  <br/>
+  <br/>
+  [<mark style="background-color: yellow;">Sí/No</mark>] autorizo que [<mark style="background-color: yellow;">Nombre comercial</mark>] transfiera mis datos personales en los supuestos que se requiere de mi consentimiento.
+  <br/>
+  <br/>
+  Para retirar el consentimiento para efectuar dichas transferencias en cualquier momento a través de [<mark style="background-color: yellow;">ejemplo@ejemplo.com</mark>], lo que podría afectar la prestación de ciertos servicios.</div align="justify">
+  <br/>
+  
+---
+template: mostrar_finalidades_clientela
+subject: |
+  b) Cliente
+content: |  
+  <div align="justify"><b>Clientela</b>: Persona que adquiere productos o servicios de [<mark style="background-color: yellow;">Nombre comercial</mark>], ya sea en nuestra sucursal o en nuestra plataforma de comercio electrónico.
+  <br/>
+  <br/>
+  <b>Datos personales</b>
+  <br/>
+  <br/>
+  Cualquier información que identifica o hace identificable a una persona física, como su nombre, edad, su correo electrónico, etc.
+  <br/>
+  <br/>
+  [<mark style="background-color: yellow;">Nombre comercial</mark>] recopila datos personales cuando el/la Titular nos los proporciona a través de medios [<mark style="background-color: yellow;">describir los medios a través de los cuales, se recolectan datos de clientela</mark>] para cumplir con las finalidades descritas en este Aviso de Privacidad.
+  <br/>
+  <br/>
+  •	Dato
+  <br/>
+  •	Dato
+  <br/>
+  •	Dato
+  <br/>
+  <br/>
+  <b>Datos sensibles</b>
+  <br/>
+  <br/>
+  Datos relacionados con la esfera más íntima de la persona y que, si se usan indebidamente, pueden causar discriminación o un riesgo grave. (Origen racial o étnico, salud, información genética, creencias religiosas o filosóficas, afiliación sindical, opiniones políticas y orientación sexual).
+  <br/>
+  <br/>
+  [<mark style="background-color: yellow;">Nombre comercial</mark>] [<mark style="background-color: yellow;">definir si se recolectan y tratan datos personales sensibles de sus clientela, en caso de ser así, indicarlos</mark>].
+  <br/>
+  <br/>
+  <b>Finalidades primarias</b>
+  <br/>
+  <br/>
+  Son las razones por las que solicitamos tus datos personales para establecer la relación entre [<mark style="background-color: yellow;">Nombre comercial</mark>] y el Titular.
+  <br/>
+  <br/>
+  •	Describir finalidad
+  <br/>
+  •	Describir finalidad
+  <br/>
+  <br/>
+  <b>Finalidades secundarias</b>
+  <br/>
+  <br/>
+  Son aquellas finalidades que, aunque no son esenciales para la relación entre [<mark style="background-color: yellow;">Nombre comercial</mark>] y el Titular, contribuyen al cumplimiento del objeto social de [<mark style="background-color: yellow;">Nombre comercial</mark>].
+  <br/>
+  <br/>
+  •	Describir finalidad
+  <br/>
+  •	Describir finalidad
+  <br/>
+  <br/>
+  <b>Transferencias de datos personales</b>
+  <br/>
+  <br/>
+  Toda comunicación de datos personales a personas distintas del responsable o del encargado del tratamiento, ya sean nacionales o extranjeros.
+  <br/>
+  <br/>
+  Para cumplir con las finalidades mencionadas y otras exigidas legalmente o por autoridades competentes mediante solicitud fundada y motivada, se realizarán las siguientes transferencias de sus datos personales:
+  <br/>
+  <br/>
+  <table style="width:100%; border-collapse: collapse; text-align: center;">
+  <tr style="background-color: #25522e; color: white; font-weight: bold;">
+    <th style="border: 1px solid black; padding: 8px;">#</th>
+    <th style="border: 1px solid black; padding: 8px;">Terceros Receptores<br>(Identidad o Categoría)</th>
+    <th style="border: 1px solid black; padding: 8px;">Finalidades de la Transferencia</th>
+    <th style="border: 1px solid black; padding: 8px;">¿Requiere Consentimiento?</th>
+  </tr>
+  <tr style="background-color: #f2f2f2;">
+    <td style="border: 1px solid black; padding: 8px;">1</td>
+    <td style="border: 1px solid black; padding: 8px;">Nombre o categoría del tercero receptor (ej. Instituciones bancarias, aseguradoras)</td>
+    <td style="border: 1px solid black; padding: 8px;">Describir la finalidad (ej. Procesar pagos, gestionar seguros)</td>
+    <td style="border: 1px solid black; padding: 8px;">Seleccione "Sí" o "No" (si aplica el artículo 37, seleccione "No")</td>
+  </tr>
+  </table>
+  <br/>
+  <b>Consentimiento para transferencia de datos personales</b>
+  <br/>
+  <br/>
+  [<mark style="background-color: yellow;">Nombre comercial</mark>] informa que sus datos personales no serán transferidos sin su consentimiento, salvo en los casos permitidos por el Artículo 37 de la <a href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LFPDPPP.pdf" target="_blank" style="color: #25522e;">Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP)</a> y conforme a las condiciones del Artículo 17 de su reglamento.
+  <br/>
+  <br/>
+  [<mark style="background-color: yellow;">Sí/No</mark>] autorizo que [<mark style="background-color: yellow;">Nombre comercial</mark>] transfiera mis datos personales en los supuestos que se requiere de mi consentimiento.
+  <br/>
+  <br/>
+  Puede retirar el consentimiento para efectuar dichas transferencias en cualquier momento a través de [<mark style="background-color: yellow;">ejemplo@ejemplo.com</mark>], lo que podría afectar la prestación de ciertos servicios.
+  </div align="justify">
+  <br/>
+
+---
+template: mostrar_finalidades_proveedor
+subject: |
+  c) Proveedor
+content: |  
+  <div align="justify"><b>Proveedor</b>: Entidad (representada por una persona física) o persona que proporciona productos o servicios especializados para satisfacer las necesidades operativas de nuestra organización.
+  <br/>
+  <br/>
+  <b>Datos personales</b>
+  <br/>
+  <br/>
+  Cualquier información que identifica o hace identificable a una persona física, como su nombre, edad, su correo electrónico, etc.
+  <br/>
+  <br/>
+  [<mark style="background-color: yellow;">Nombre comercial</mark>] recopila datos personales cuando el/la Titular nos los proporciona a través de medios [<mark style="background-color: yellow;">describir los medios a través de los cuales, se recolectan datos de proveedor</mark>] para cumplir con las finalidades descritas en este Aviso de Privacidad.
+  <br/>
+  <br/>
+  •	Dato
+  <br/>
+  •	Dato
+  <br/>
+  •	Dato
+  <br/>
+  <br/>
+  <b>Datos sensibles</b>
+  <br/>
+  <br/>
+  Datos relacionados con la esfera más íntima de la persona y que, si se usan indebidamente, pueden causar discriminación o un riesgo grave. (Origen racial o étnico, salud, información genética, creencias religiosas o filosóficas, afiliación sindical, opiniones políticas y orientación sexual).
+  <br/>
+  <br/>
+  [<mark style="background-color: yellow;">Nombre comercial</mark>] [<mark style="background-color: yellow;">definir si se recolectan y tratan datos personales sensibles de sus proveedores, en caso de ser así, indicarlos</mark>].
+  <br/>
+  <br/>
+  <b>Finalidades primarias</b>
+  <br/>
+  <br/>
+  Son las razones por las que solicitamos tus datos personales para establecer la relación entre [<mark style="background-color: yellow;">Nombre comercial</mark>] y el Titular.
+  <br/>
+  <br/>
+  •	Describir finalidad
+  <br/>
+  •	Describir finalidad
+  <br/>
+  <br/>
+  <b>Finalidades secundarias</b>
+  <br/>
+  <br/>
+  Son aquellas finalidades que, aunque no son esenciales para la relación entre [<mark style="background-color: yellow;">Nombre comercial</mark>] y el Titular, contribuyen al cumplimiento del objeto social de [<mark style="background-color: yellow;">Nombre comercial</mark>].
+  <br/>
+  <br/>
+  •	Describir finalidad
+  <br/>
+  •	Describir finalidad
+  <br/>
+  <br/>
+  <b>Transferencias de datos personales</b>
+  <br/>
+  <br/>
+  Toda comunicación de datos personales a personas distintas del responsable o del encargado del tratamiento, ya sean nacionales o extranjeros.
+  <br/>
+  <br/>
+  Para cumplir con las finalidades mencionadas y otras exigidas legalmente o por autoridades competentes mediante solicitud fundada y motivada, se realizarán las siguientes transferencias de sus datos personales:
+  <br/>
+  <br/>
+  <table style="width:100%; border-collapse: collapse; text-align: center;">
+  <tr style="background-color: #25522e; color: white; font-weight: bold;">
+    <th style="border: 1px solid black; padding: 8px;">#</th>
+    <th style="border: 1px solid black; padding: 8px;">Terceros Receptores<br>(Identidad o Categoría)</th>
+    <th style="border: 1px solid black; padding: 8px;">Finalidades de la Transferencia</th>
+    <th style="border: 1px solid black; padding: 8px;">¿Requiere Consentimiento?</th>
+  </tr>
+  <tr style="background-color: #f2f2f2;">
+    <td style="border: 1px solid black; padding: 8px;">1</td>
+    <td style="border: 1px solid black; padding: 8px;">Nombre o categoría del tercero receptor (ej. Instituciones bancarias, aseguradoras)</td>
+    <td style="border: 1px solid black; padding: 8px;">Describir la finalidad (ej. Procesar pagos, gestionar seguros)</td>
+    <td style="border: 1px solid black; padding: 8px;">Seleccione "Sí" o "No" (si aplica el artículo 37, seleccione "No")</td>
+  </tr>
+  </table>
+  <br/>
+  <b>Consentimiento para transferencia de datos personales</b>
+  <br/>
+  <br/>
+  [<mark style="background-color: yellow;">Nombre comercial</mark>] informa que sus datos personales no serán transferidos sin su consentimiento, salvo en los casos permitidos por el Artículo 37 de la <a href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LFPDPPP.pdf" target="_blank" style="color: #25522e;">Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP)</a> y conforme a las condiciones del Artículo 17 de su reglamento.
+  <br/>
+  <br/>
+  [<mark style="background-color: yellow;">Sí/No</mark>] autorizo que [<mark style="background-color: yellow;">Nombre comercial</mark>] transfiera mis datos personales en los supuestos que se requiere de mi consentimiento.
+  <br/>
+  <br/>
+  Puede retirar el consentimiento para efectuar dichas transferencias en cualquier momento a través de [<mark style="background-color: yellow;">ejemplo@ejemplo.com</mark>], lo que podría afectar la prestación de ciertos servicios.
+  </div align="justify">
+  <br/>
+
+---
+template: mostrar_finalidades_candidato_empleo
+subject: |
+  d) Candidatura a empleo
+content: |  
+  <div align="justify"><b>Candidatura a empleo</b>: Persona que se postula para integrarse a nuestro equipo.
+  <br/>
+  <br/>
+  <b>Datos personales</b>
+  <br/>
+  <br/>
+  Cualquier información que identifica o hace identificable a una persona física, como su nombre, edad, su correo electrónico, etc.
+  <br/>
+  <br/>
+  [<mark style="background-color: yellow;">Nombre comercial</mark>] recopila datos personales cuando el/la Titular nos los proporciona a través de medios [<mark style="background-color: yellow;">describir los medios a través de los cuales, se recolectan datos de candidaturas a empleo</mark>] para cumplir con las finalidades descritas en este Aviso de Privacidad.
+  <br/>
+  <br/>
+  •	Dato
+  <br/>
+  •	Dato
+  <br/>
+  •	Dato
+  <br/>
+  <br/>
+  <b>Datos sensibles</b>
+  <br/>
+  <br/>
+  Datos relacionados con la esfera más íntima de la persona y que, si se usan indebidamente, pueden causar discriminación o un riesgo grave. (Origen racial o étnico, salud, información genética, creencias religiosas o filosóficas, afiliación sindical, opiniones políticas y orientación sexual).
+  <br/>
+  <br/>
+  [<mark style="background-color: yellow;">Nombre comercial</mark>] [<mark style="background-color: yellow;">definir si se recolectan y tratan datos personales sensibles de sus candidatos a empleo, en caso de ser así, indicarlos</mark>].
+  <br/>
+  <br/>
+  <b>Finalidades primarias</b>
+  <br/>
+  <br/>
+  Son las razones por las que solicitamos tus datos personales para establecer la relación entre [<mark style="background-color: yellow;">Nombre comercial</mark>] y el Titular.
+  <br/>
+  <br/>
+  •	Describir finalidad
+  <br/>
+  •	Describir finalidad
+  <br/>
+  <br/>
+  <b>Finalidades secundarias</b>
+  <br/>
+  <br/>
+  Son aquellas finalidades que, aunque no son esenciales para la relación entre [<mark style="background-color: yellow;">Nombre comercial</mark>] y el Titular, contribuyen al cumplimiento del objeto social de [<mark style="background-color: yellow;">Nombre comercial</mark>].
+  <br/>
+  <br/>
+  •	Describir finalidad
+  <br/>
+  •	Describir finalidad
+  <br/>
+  <br/>
+  <b>Transferencias de datos personales</b>
+  <br/>
+  <br/>
+  Toda comunicación de datos personales a personas distintas del responsable o del encargado del tratamiento, ya sean nacionales o extranjeros.
+  <br/>
+  <br/>
+  Para cumplir con las finalidades mencionadas y otras exigidas legalmente o por autoridades competentes mediante solicitud fundada y motivada, se realizarán las siguientes transferencias de sus datos personales:
+  <br/>
+  <br/>
+  <table style="width:100%; border-collapse: collapse; text-align: center;">
+  <tr style="background-color: #25522e; color: white; font-weight: bold;">
+    <th style="border: 1px solid black; padding: 8px;">#</th>
+    <th style="border: 1px solid black; padding: 8px;">Terceros Receptores<br>(Identidad o Categoría)</th>
+    <th style="border: 1px solid black; padding: 8px;">Finalidades de la Transferencia</th>
+    <th style="border: 1px solid black; padding: 8px;">¿Requiere Consentimiento?</th>
+  </tr>
+  <tr style="background-color: #f2f2f2;">
+    <td style="border: 1px solid black; padding: 8px;">1</td>
+    <td style="border: 1px solid black; padding: 8px;">Nombre o categoría del tercero receptor (ej. Instituciones bancarias, aseguradoras)</td>
+    <td style="border: 1px solid black; padding: 8px;">Describir la finalidad (ej. Procesar pagos, gestionar seguros)</td>
+    <td style="border: 1px solid black; padding: 8px;">Seleccione "Sí" o "No" (si aplica el artículo 37, seleccione "No")</td>
+  </tr>
+  </table>
+  <br/>
+  <b>Consentimiento para transferencia de datos personales</b>
+  <br/>
+  <br/>
+  [<mark style="background-color: yellow;">Nombre comercial</mark>] informa que sus datos personales no serán transferidos sin su consentimiento, salvo en los casos permitidos por el Artículo 37 de la <a href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LFPDPPP.pdf" target="_blank" style="color: #25522e;">Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP)</a> y conforme a las condiciones del Artículo 17 de su reglamento.
+  <br/>
+  <br/>
+  [<mark style="background-color: yellow;">Sí/No</mark>] autorizo que [<mark style="background-color: yellow;">Nombre comercial</mark>] transfiera mis datos personales en los supuestos que se requiere de mi consentimiento.
+  <br/>
+  <br/>
+  Puede retirar el consentimiento para efectuar dichas transferencias en cualquier momento a través de [<mark style="background-color: yellow;">ejemplo@ejemplo.com</mark>], lo que podría afectar la prestación de ciertos servicios.
+  </div align="justify">
+  <br/>
+
+---
+
+template: mostrar_aviso_privacidad_integral
+subject: |
+  Integral (el más completo)
+content: |
+  <div align="center"><b>Aviso de Privacidad Integral [<mark style="background-color: yellow;">Nombre comercial</mark>]</b></div align="center">
+  <br/>
+  <b>Identidad y domicilio del responsable</b>
+  <br/>
+  <div align="justify">[<mark style="background-color: yellow;">Razón Social/Nombre completo (p. física)</mark>], (en adelante, [<mark style="background-color: yellow;">Nombre comercial</mark>]), con domicilio para oír y recibir notificaciones en, [<mark style="background-color: yellow;">nombre de la calle, número exterior e interior (si aplica), colonia o barrio, código postal, municipio o alcaldía, estado o entidad federativa</mark>], México, es el responsable del tratamiento de los datos personales proporcionados, según el perfil del Titular y el contenido de este Aviso de Privacidad.
+  <br/>
+  <br/>
+  <b>Detalles del tratamiento de datos personales según el perfil del/la Titular.
+  <br/>
+  <br/>
+  </div align="justify">
+  </b>
+  ${prog_disclose(mostrar_finalidades_visitante)}
+  </b>
+  ${prog_disclose(mostrar_finalidades_clientela)}
+  </b>
+  ${prog_disclose(mostrar_finalidades_proveedor)}
+  </b>
+  ${prog_disclose(mostrar_finalidades_candidato_empleo)}
+  <div align="justify">
+  <b>Medios para el ejercicio de derechos ARCO y revocación del consentimiento</b>
+  <br/>
+  <br/>
+  El/la Titular o su representante legal podrán ejercer cualquiera de los derechos de acceso, rectificación, cancelación u oposición, también conocidos como derechos ARCO, así como revocar su consentimiento para el tratamiento de sus datos atendiendo lo siguiente:
+  <br/>
+  <br/>
+  • Presentar la solicitud respectiva en el domicilio señalado al inicio de este Aviso de Privacidad, con atención a nuestro Departamento de Privacidad mediante un escrito libre, o bien, llenando el formato que puede solicitar en ejemplo@[<mark style="background-color: yellow;">Nombre comercial</mark>].com, señalando el siguiente contenido:
+  <br/>
+  <br/>
+  • Nombre del solicitante, y en su caso, de su representante legal.
+  <br/>
+  <br/>
+  • Los documentos que acrediten la identidad, o en su caso, la representación legal del/la Titular de los datos personales. Domicilio y/o correo electrónico para efecto de la atención de la solicitud para el ejercicio del derecho de que se trate.
+  <br/>
+  <br/>
+  • La descripción clara y precisa del derecho que quiere ejercerse, así como los datos personales respecto de los que se busca ejercer alguno de los derechos mencionados.
+  <br/>
+  <br/>
+  Si se trata de un derecho de corrección, indicar los datos a corregir y la corrección a realizar, o bien, si se trata de un derecho de oposición, en su caso, indicar las finalidades secundarias sobre las que se desea ejercer el derecho.
+  <br/>
+  <br/>
+  • Cualquier medio o documento que facilite la ubicación o identificación de los datos personales.
+  <br/>
+  <br/>
+  El ejercicio de los derechos aquí indicados será gratuito, sin embargo, para el caso del ejercicio del derecho de acceso, el/la Titular podrá solicitar la entrega, previa acreditación de su identidad frente al responsable, a través de la expedición de copias simples o la entrega de documentos electrónicos, por lo que el/la Titular deberá cubrir los gastos de envío o de reproducción generados, el que la será informado al comunicarle la procedencia del ejercicio de su derecho.
+  <br/>
+  <br/>
+  Las comunicaciones que realizaremos para la atención del ejercicio del derecho de se trate será efectuada a través del domicilio o correo electrónico indicado en la solicitud del/la Titular.
+  <br/>
+  <br/>
+  <b>Los plazos para la atención del ejercicio de derechos ARCO, así como la revocación de consentimiento son los siguientes:</b>
+  <br/>
+  <br/>
+  <table style="width:100%; border-collapse: collapse; text-align: center;">
+    <tr style="background-color: #25522e; color: white; font-weight: bold;">
+      <th style="border: 1px solid black; padding: 8px;">Acción</th>
+      <th style="border: 1px solid black; padding: 8px;">Plazo</th>
+    </tr>
+    <tr style="background-color: #f2f2f2;">
+      <td style="border: 1px solid black; padding: 8px;">Requerimiento de información adicional (en caso de que la solicitud del/la Titular no sea clara):</td>
+      <td style="border: 1px solid black; padding: 8px;">5 días hábiles</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 8px;">Desahogo del requerimiento por parte del/la Titular de los datos:</td>
+      <td style="border: 1px solid black; padding: 8px;">10 días hábiles</td>
+    </tr>
+    <tr style="background-color: #f2f2f2;">
+      <td style="border: 1px solid black; padding: 8px;">Respuesta a la solicitud por parte de [<mark style="background-color: yellow;">Nombre comercial</mark>]:</td>
+      <td style="border: 1px solid black; padding: 8px;">20 días hábiles</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 8px;">Respuesta a la solicitud en caso de ampliación por parte de [<mark style="background-color: yellow;">Nombre comercial</mark>]:</td>
+      <td style="border: 1px solid black; padding: 8px;">40 días hábiles</td>
+    </tr>
+    <tr style="background-color: #f2f2f2;">
+      <td style="border: 1px solid black; padding: 8px;">Plazo para hacer efectivo el derecho en caso de que resulte procedente:</td>
+      <td style="border: 1px solid black; padding: 8px;">15 días hábiles</td>
+    </tr>
+  </table>
+  <br/>
+  Los plazos indicados en el párrafo anterior podrán ser ampliados por el mismo tiempo señalado por una sola ocasión y por causa justificada.
+  <br/>
+  <br/>
+  <b>Opciones y medios para limitar el uso o divulgación de los datos personales</b>
+  <br/>
+  <br/>
+  El/la Titular podrá limitar el uso o divulgación de sus datos personales haciendo su solicitud vía correo electrónico a la dirección privacidad@[<mark style="background-color: yellow;">Nombre comercial</mark>] .com. En caso de que su solicitud sea procedente se le registrará en el listado con el que [<mark style="background-color: yellow;">Nombre comercial</mark>] cuenta para tal efecto.
+  <br/>
+  <br/>
+  Adicionalmente, la limitación del uso y divulgación de los datos personales puede ampliarse mediante la inscripción del número telefónico de los Titulares de datos personales en el Registro Público para evitar Publicidad (REPEP) <a href="https://www.repep.profeco.gob.mx" target="_blank" style="color: #25522e;">https://www.repep.profeco.gob.mx</a>, que está a cargo de la Procuraduría Federal del Consumidor (PROFECO), con la finalidad de que sus datos personales no sean utilizados para recibir publicidad o promociones de empresas de bienes o servicios.
+  <br/>
+  <br/>
+  <b>Uso de Cookies</b>
+  <br/>
+  <br/>
+  [<mark style="background-color: yellow;">Esta sección debe adaptarse a cada plataforma digital y el uso real de cookies. El contenido a continuación es solo una referencia.</mark>] 
+  <br/>
+  <br/>
+  Para proporcionar una experiencia óptima en nuestra plataforma, usamos cookies propias y de terceros.
+  <br/>
+  Una cookie es información que un sitio web almacena en su computadora mediante el uso de un navegador o explorador de internet. Las cookies que usamos en nuestro sitio web son:
+  <br/>
+  <br/>
+  • <b>Cookies técnicas:</b> Dan acceso a las distintas categorías, productos y servicios en el Sitio y garantizan la seguridad de nuestros visitantes y clientela. Son esenciales para el funcionamiento operativo del Sitio y no pueden ser desactivadas.
+  <br/>
+  <br/>
+  • <b>Cookies de perfil:</b> Nos permiten ofrecer una experiencia óptima y personalizada al/a usuario(a), recomendándole productos, servicios y contenido que mejor se adapte a sus preferencias. Además de permitirnos proporcionarles ofertas personalizadas adaptadas a cada perfil.
+  <br/>
+  <br/>
+  • <b>Cookies de publicidad y medios sociales:</b> Usadas para mostrar contenido que puede interesar a cada visitante mediante anuncios, sitios de terceros y redes sociales; todo esto, basado en las páginas previamente vistas, historial de navegación e interacción.
+  <br/>
+  <br/>
+  • <b>Cookies de medición de audiencias:</b> Nos permiten obtener estadísticas de visitantes y comportamientos de navegación en nuestro Sitio, con el fin de mejorar su funcionamiento.
+  <br/>
+  <br/>
+  • <b>Cookies de seguridad del pago:</b> Para impedir conductas fraudulentas en los pagos. Así como robo de identidad.
+  <br/>
+  <br/>
+  Exceptuando las cookies técnicas, la inclusión de estas cookies requieren del consentimiento de la clientela que visita, navega o usa nuestra plataforma. Toda persona puede personalizar sus preferencias en el gestor de cookies que ponemos a su disposición y pueden optar por retirar su consentimiento en cualquier momento.
+  <br/>
+  <br/>
+  <b>Las cookies pueden inhabilitarse del siguiente modo:</b>
+  <br/>
+  <br/>
+  En una PC: abrir el explorador de internet, entrar al menú de “Herramientas”, entrar a “Opciones de Internet”, escoger la pestaña de “Privacidad”, mover el cursor de la Configuración hacia “Bloquear todas las Cookies”.
+  <br/>
+  <br/>
+  En una Mac: abrir la aplicación de internet, ir a “Preferencias”, escoger la opción de “Seguridad”, escoger “Nunca” en la opción de “Aceptar Cookies”.
+  <br/>
+  <br/>
+  Hay algunos navegadores que permiten instalar herramientas complementarias (add-on software tools) para bloquear, eliminar o controlar las cookies. Generalmente, los programas de seguridad incluyen opciones para facilitar el control de las cookies.
+  <br/>
+  <br/>
+  <b>Cambios al aviso de privacidad</b>
+  <br/>
+  <br/>
+  Nos reservamos el derecho de efectuar modificaciones o actualizaciones al presente aviso de privacidad en cualquier momento; en cuyo caso, [<mark style="background-color: yellow;">Nombre comercial</mark>] publicará estos cambios en su sección de Aviso de Privacidad, o bien, la clientela podrá consultarlo en nuestras tiendas.
+  <br/>
+  <br/>
+  <b>Consentimiento</b>
+  <br/>
+  <br/>
+  Al continuar navegando en nuestro sitio web, o bien, al contactarnos por alguno de los medios habilitados para este fin y proporcionarnos sus datos, el/la Titular manifiesta conocer el contenido, alcance, términos y condiciones descritos en el presente Aviso de Privacidad y consciente el tratamiento de sus datos personales y financieros conforme a dicho contenido.
+  <br/>
+  </div align="justify">
+
+  
+---
+
+template: mostrar_aviso_privacidad
+subject: Avisos de privacidad
+content: |
+  ${prog_disclose(mostrar_aviso_privacidad_integral)}
+  ${prog_disclose(mostrar_aviso_privacidad_simplificado)}
+  ${prog_disclose(mostrar_aviso_privacidad_corto)}
+  ${prog_disclose(mostrar_aviso_privacidad_cctv)}
+
+---
+
+template: mostrar_aviso_privacidad_cctv
+subject: |
+  Circuito de videovigilancia
+content: |
+  <div align="center">
+  <b>📹 Área video vigilada</b></div align="center">
+  <div align="justify">
+  <br/>
+  <b>[<mark style="background-color: yellow;">Razón Social</mark>]</b> (en adelante <b>[<mark style="background-color: yellow;">Nombre Comercial</mark>]</b>), con domicilio para oír y recibir notificaciones ubicado en, <b>[<mark style="background-color: yellow;">Domicilio</mark>]</b>, le informa que sus datos personales son tratados a través de nuestro sistema de video vigilancia para las siguientes finalidades:
+  <br/>
+  <br/>
+  (a) Vigilancia y seguridad de las instalaciones de <b>[<mark style="background-color: yellow;">Nombre Comercial</mark>]</b>; 
+  <br/>
+  (b) Seguridad de clientes, colaboradores, visitantes y proveedores; 
+  <br/>
+  (c) Para control de accesos a sus instalaciones y, 
+  <br/>
+  (d) En su caso, para estar en posibilidad de identificar a las personas en el supuesto de que se vulnere algún bien jurídico.
+  <br/>
+  <br/>
+  Para más información acerca del tratamiento de sus datos personales y de los derechos que puede hacer valer, usted puede acceder al Aviso de Privacidad Integral general, en la página web [<mark style="background-color: yellow;">https://www.ejemplo.com/</mark>], así como en cada una de nuestras instalaciones, o a través de nuestro Departamento de Datos Personales en el domicilio antes indicado, o en el siguiente correo electrónico: <b>[<mark style="background-color: yellow;">ejemplo@ejemplo.com</mark>]</b>.
+  <br/>
+  <br/>
+  Usted o su representante legal podrán ejercer cualquiera de los derechos de acceso, rectificación, cancelación u oposición, también conocidos como derechos ARCO, así como revocar su consentimiento para el tratamiento de sus datos, a través del correo electrónico: <b>[<mark style="background-color: yellow;">ejemplo@ejemplo.com</mark>]</b>.
+  </div>
+  <br/>
+  
+---
+
+template: mostrar_aviso_privacidad_corto
+subject: |
+  Corto
+content: |
+  <div align="justify">
+  <b>Aviso de privacidad corto</b>
+  <br/>
+  <br/>
+  <b>Razón social</b> [<mark style="background-color: yellow;">Nombre Comercial</mark>], ubicado en [<mark style="background-color: yellow;">Domicilio</mark>], tratará sus datos para [<mark style="background-color: yellow;">poner la finalidad para que se van a usar, esto se debe tomar del aviso integral</mark>].
+  <br/>
+  <br/>
+  Le invitamos a conocer nuestro aviso de privacidad integral en [<mark style="background-color: yellow;">https://www.ejemplo.com</a></mark>].
+  </div>
+  <br/>
+  
+---
+
+template: mostrar_aviso_privacidad_simplificado
+subject: |
+  Simplificado
+content: |
+  <div align="justify">
+  <b>Aviso de privacidad simplificado</b>
+  <br/>
+  <br/>
+  <b>Razón social</b> [<mark style="background-color: yellow;">Nombre Comercial</mark>], ubicado en [<mark style="background-color: yellow;">Domicilio</mark>], es el responsable del tratamiento de sus datos personales.
+  <br/>
+  <br/>
+  Sus datos serán usados para [<mark style="background-color: yellow;">poner la finalidad para que se van a usar, esto se debe tomar del aviso integral</mark>].
+  <br/>
+  <br/>
+  En caso de no oponerse, sus datos se usarán para [<mark style="background-color: yellow;">agregar finalidades de marketing, si es que las hay</mark>].
+  <br/>
+  <br/>
+  Si desea conocer los detalles del tratamiento de sus datos personales, por favor consulte nuestro aviso de privacidad integral en [<mark style="background-color: yellow;">https://www.ejemplo.com</a></mark>].
+  </div>
+  <br/>
+  
+---
+
+template: mostrar_ensenaza
+subject: |
+  ¿Quieres conocer más acerca de Datos Personales?
+content: |
+  <div align="justify">
+  Aquí tienes algunos recursos útiles para aprender más sobre la protección de datos personales:
+  <br/>
+  <br/>
+  - 🎥 <u><a href="https://www.youtube.com/watch?v=PU2R7s8uTYI" target="_blank">Video: Introducción a la Protección de Datos Personales:</a></u>  
+    Un video educativo sobre protección de datos personales.
+    <br/>
+    <br/>
+  - 📝 <u><a href="https://www.internetsociety.org/wp-content/uploads/2017/09/ISOC-PolicyBrief-Privacy-20151030-es.pdf" target="_blank">Blog: Consejos para proteger tus datos personales en línea:</a></u>  
+    Un artículo que aborda cómo proteger tu privacidad en la era digital y mantener seguros tus datos personales.
+    <br/>
+    <br/>
+  - 📚 <u><a href="https://administrativando.es/libros-sobre-el-derecho-a-la-proteccion-de-datos-personales/" target="_blank">Libro: "La Protección de Datos Personales en la Era Digital":</a></u>  
+    Un libro completo que explora las normativas en torno a la privacidad y protección de datos en España y Europa.
+    <br/>
+    <br/>
+  - 📄 <u><a href="https://home.inai.org.mx/wp-content/documentos/AccionesCapacitacion/Manual%20del%20Participante-Curso%20LGPDPPPSO-2019.pdf" target="_blank">PDF: Guía práctica sobre la Ley General de Protección de Datos Personales:</a></u>  
+    Un manual en formato PDF proporcionado por el INAI que detalla los derechos de los ciudadanos en relación con sus datos personales y cómo ejercerlos.
+    <br/>
+    <br/>
+  - 🌍 <u><a href="https://home.inai.org.mx" target="_blank">Sitio Web: INAI - Instituto Nacional de Transparencia:</a></u>  
+    Visita la página oficial del INAI para obtener más información sobre la legislación mexicana en protección de datos y derechos ARCO.
+    <br/>
+  </div>
+  <br/>
+  
+---
+
+template: mostrar_faqs
+subject: |
+  Preguntas frecuentes
+content: |
+  
+  <div style="text-align: justify;">
+
+  <p>🛡️ <b>¿Qué derechos tengo sobre mis datos personales?</b></p>
+  <p>Tienes el derecho a acceder, corregir, cancelar y oponerte al uso de tus datos personales.</p>
+
+  <p>🔍 <b>¿Cómo puedo saber qué datos personales tiene una empresa sobre mí?</b></p>
+  <p>Puedes solicitar una consulta sobre tus datos personales y te proporcionaremos una copia de los datos que tenemos sobre ti.</p>
+
+  <p>✏️ <b>¿Qué debo hacer si quiero que la empresa corrija datos incorrectos sobre mí?</b></p>
+  <p>Envía una solicitud indicando los datos erróneos y proporciona la información correcta para que procedamos a hacer la corrección.</p>
+
+  <p>🗑️ <b>¿Puedo solicitar que se eliminen todos mis datos personales de una empresa?</b></p>
+  <p>Sí, puedes solicitar la eliminación de tus datos personales si ya no son necesarios, si retiras tu consentimiento, o si crees que están siendo usados de manera indebida.</p>
+
+  <p>🔄 <b>¿Puedo revocar mi consentimiento para el uso de mis datos personales?</b></p>
+  <p>Sí, puedes revocar tu consentimiento en cualquier momento. Debes enviarnos una solicitud y dejaremos de usar tus datos, salvo obligaciones legales.</p>
+
+  <p>⚖️ <b>¿Cómo se puede ejercer el derecho de oposición sobre mis datos personales?</b></p>
+  <p>Puedes enviar una solicitud indicando tu oposición a ciertos fines, como publicidad o encuestas, y ajustaremos el uso de tus datos de acuerdo con tu petición.</p>
+
+  <p>📜 <b>¿Qué es un aviso de privacidad y por qué es importante?</b></p>
+  <p>Un aviso de privacidad te informa sobre cómo recolectamos, usamos y protegemos tus datos personales, permitiéndote tomar decisiones informadas.</p>
+
+  <p>📝 <b>¿Qué información debe contener un aviso de privacidad?</b></p>
+  <p>El aviso de privacidad debe incluir la identidad del responsable, los tipos de datos que se recopilan, el propósito del uso, tus derechos, y cómo puedes ejercerlos.</p>
+
+  <p>🔐 <b>¿Qué medidas deben tomar las empresas para proteger mis datos personales?</b></p>
+  <p>Implementamos medidas como encriptación de datos, controles de acceso, y políticas de seguridad para proteger tus datos contra accesos no autorizados.</p>
+
+  <p>✉️ <b>¿Qué pasos debo seguir para revocar mi consentimiento dado anteriormente para el tratamiento de mis datos?</b></p>
+  <p>Envía una solicitud por escrito para revocar tu consentimiento. Te proporcionaremos un medio para hacerlo y dejaremos de usar tus datos.</p>
+
+  <p>🚨 <b>¿Qué pasa si mi información personal es robada o hackeada?</b></p>
+  <p>Te informaremos de inmediato sobre el incidente, tomaremos medidas para mitigar el daño y reportaremos el incidente al INAI si es necesario.</p>
+
+  <p>🛠️ <b>¿Puedo pedir que una empresa me informe sobre cómo utilizan mis datos personales?</b></p>
+  <p>Sí, puedes solicitar información sobre cómo usamos tus datos, incluyendo los fines y las medidas de seguridad implementadas.</p>
+
+  <p>⚠️ <b>¿Qué son los datos sensibles y cómo se deben manejar?</b></p>
+  <p>Los datos sensibles son aquellos que pueden afectar tu privacidad significativamente, como salud o creencias religiosas. Estos datos requieren un mayor nivel de protección y solo se recogen con tu consentimiento explícito.</p>
+
+  <p>🌍 <b>¿Cómo se protegen los datos personales cuando se transfieren a otro país?</b></p>
+  <p>Aseguramos que el país receptor tenga un nivel adecuado de protección de datos y tomamos medidas para proteger tus datos si el país no cumple con los estándares necesarios.</p>
+
+  <p>⌛ <b>¿Qué hacer si una empresa no responde a mi solicitud de acceso a mis datos?</b></p>
+  <p>Puedes presentar una queja ante el INAI. Ellos te ayudarán a resolver la situación si no respondemos en un plazo razonable.</p>
+
+  <p>⚖️ <b>¿Qué sucede si una empresa no cumple con las leyes de protección de datos personales?</b></p>
+  <p>Puedes presentar una queja ante el INAI. Ellos investigarán y, si hay incumplimiento, pueden imponer sanciones.</p>
+
+  <p>📇 <b>¿Qué es un dato personal según la legislación mexicana?</b></p>
+  <p>Un dato personal es cualquier información que puede identificarte, como tu nombre, dirección, correo electrónico, o datos biométricos.</p>
+
+  <p>🛡️ <b>¿Quién es responsable de cuidar mis datos personales?</b></p>
+  <p>Somos responsables de proteger tus datos personales y asegurar el cumplimiento de las normativas vigentes sobre su uso y tratamiento.</p>
+
+  <p>✍️ <b>¿Es necesario dar mi consentimiento para que una empresa recoja mis datos personales?</b></p>
+  <p>Sí, generalmente necesitamos tu consentimiento para recolectar y usar tus datos personales. Este consentimiento debe ser informado.</p>
+
+  <p>📋 <b>¿Qué datos personales puede recolectar una empresa sin mi consentimiento?</b></p>
+  <p>Necesitamos tu consentimiento para recolectar y usar tus datos personales, excepto en casos permitidos por la ley como el cumplimiento de obligaciones legales.</p>
+
+  <p>🔒 <b>¿Cómo puedo asegurarme de que una empresa proteja mis datos personales?</b></p>
+  <p>Lee nuestro aviso de privacidad para entender cómo protegemos tus datos y qué medidas implementamos. Puedes preguntar sobre nuestras políticas de seguridad.</p>
+
+  <p>⛔ <b>¿Puedo limitar el uso de mis datos personales para fines específicos?</b></p>
+  <p>Sí, puedes solicitar que limitemos el uso de tus datos para fines específicos, como publicidad o encuestas. Evaluaremos tu solicitud y ajustaremos el uso de tus datos.</p>
+
+  <p>🔐 <b>¿Qué medidas deben tomar las empresas para proteger mis datos personales?</b></p>
+  <p>Implementamos medidas de seguridad como contraseñas seguras, encriptación de datos, y políticas de acceso restringido. También capacitamos a nuestros empleados en la protección de datos.</p>
+
+  <p>🗑️ <b>¿Qué pasa si la empresa no elimina mis datos personales después de solicitarlo?</b></p>
+  <p>Puedes presentar una queja ante el INAI si no eliminamos tus datos después de tu solicitud. Ellos investigarán el caso y tomarán las acciones necesarias.</p>
+
+  <p>📨 <b>¿Qué debo hacer si la empresa comparte mis datos sin mi permiso?</b></p>
+  <p>Si compartimos tus datos sin tu permiso, por favor, háznoslo saber. Tomaremos medidas para corregir el problema y puedes presentar una queja ante el INAI si es necesario.</p>
+
+  </div>
+
+
+
+
+---
+
+template: mostrar_explicacion_solicitud_derechos_arco
+subject: |
+  ¿Por qué ejercer un derecho ARCOR?
+content: |
+  <div align="justify">Los derechos ARCOR son:
+  <br/>
+  <br/>
+  <b>Acceso</b>:
+  Permite conocer qué datos personales tiene una empresa sobre ti y cómo los utiliza. Es como pedir un resumen de toda la información que tienen guardada sobre ti.
+  <br/>
+  <br/>
+  <b>Rectificación</b>:
+  Te da la posibilidad de corregir cualquier error en tus datos personales. Si ves que algo está mal escrito o desactualizado, puedes pedir que lo corrijan.
+  <br/>
+  <br/>
+  <b>Cancelación</b>:
+  Te permite pedir que borren tus datos personales cuando ya no sean necesarios para el propósito que fueron recolectados. Es como pedirle a la empresa que elimine tu información si ya no la necesitan.
+  <br/>
+  <br/>
+  <b>Oposición</b>:
+  Puedes solicitar que dejen de usar tus datos personales para ciertos fines. Por ejemplo, si no quieres recibir más correos de publicidad, puedes pedir que no utilicen tus datos para enviarte esos correos.
+  <br/>
+  <br/>
+  Ahora que conoces los derechos ARCOR, puedes decidir si ejercer alguno de ellos. Por ejemplo:
+  <br/>
+  <br/>
+  - Si quieres saber qué información tienen sobre ti, puedes solicitar el <b>derecho de Acceso</b>.
+  <br/>
+  - Si encuentras errores en tu información, puedes pedir una <b>Rectificación</b>.
+  <br/>
+  - Si ya no quieres que conserven tu información, puedes solicitar la <b>Cancelación</b> de tus datos.
+  <br/>
+  - Si no deseas que usen tu información para ciertos propósitos, puedes ejercer tu derecho de <b>Oposición</b>.
+  <br/>
+  <br/>
+  Puedes comenzar llenando la solicitud <u ><a href=''  target="_blank">haciendo click aquí</a></u>. Si tienes alguna duda, no dudes en consultar a nuestra Inteligencia Artificial <u ><a href=''  target="_blank">presiona aquí </a></u>.</div align="justify">
+  <br/>
+  
+---
+
+template: mostrar_derechos_arco
+subject: |
+  Derechos del Titular "<b>ARCOR</b>"
+content: |
+  <style>
+  .custom-button {
+      border: 1px solid;
+      padding: 6px 12px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  }
+
+  .custom-button:hover {
+      background-color: #25522e; /* Lighter green on hover */
+      color: #fff; /* Ensure text turns white on hover */
+  }
+  </style>
+
+  <button class="custom-button" onclick="window.open('https://apps.cactuslegaltech.com/interview?i=docassemble.playground4inai:solicitud_ejercicio_arco.yml', '_blank');">
+  &#x2696; Solicitar ejercicio de derecho ARCO
+  </button>
+  <br/>
+  <br/>
+  <button class="custom-button" onclick="window.open('https://apps.cactuslegaltech.com/interview?i=docassemble.playground4inai:asesor_datos_personales.yml', '_blank');">🤖 Consultar IA
+  </button>
+  </a>
+  <br/>
+  <br/>
+  ${prog_disclose(mostrar_explicacion_solicitud_derechos_arco)}
+  
+---
+
+template: mostrar_contacto_datos_personales
+subject: |
+  Contactar área de datos personales
+content: |
+  <style>
+  .custom-button {
+      border: 1px solid;
+      padding: 6px 12px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  }
+
+  .custom-button:hover {
+      background-color: #25522e; /* Dark green on hover */
+      color: #fff; /* Ensure text turns white on hover */
+  }
+  </style>
+
+  <button class="custom-button" onclick="window.open('https://wa.me/523315401920', '_blank');">
+  &#x1F4AC; Whatsapp
+  </button>
+
+  <button class="custom-button" onclick="window.location.href='mailto:bot@cactuslegaltech.com'">
+  &#9993; Correo electrónico
+  </button>
+
+  <button class="custom-button" onclick="window.open('https://apps.cactuslegaltech.com/interview?i=docassemble.playground4inai:asesor_datos_personales.yml', '_blank');">
+  &#x1F916; Consultar IA
+  </button>
+
+  <button class="custom-button" onclick="window.location.href='tel:+523315401920'">
+  &#x1F4DE; Llamando al +523315401920
+  </button>
+
+
+---
+
+event: portal_datos_personales
+question: |
+  <div align="center">[FILE portada_portal_datos_personales.png, 50%, Portada]</div align="center">
+subquestion: |
+  ${prog_disclose(mostrar_aviso_privacidad)}
+  ${prog_disclose(mostrar_derechos_arco)}
+  ${prog_disclose(mostrar_contacto_datos_personales)}
+  ${prog_disclose(mostrar_recursos)}
+  
+
+---
+
+template: mostrar_terminos_condiciones
+subject: |
+  Términos y condiciones
+content: |
+  Blabla
+
+---
+
+template: mostrar_uso_responsable_ia
+subject: |
+  Uso responsable de IA
+content: |
+  Blabla
+  
+---
+
+template: mostrar_acerca_de
+subject: |
+  Acerca de este portal
+content: |
+  ${prog_disclose(mostrar_terminos_condiciones)}
+  
+  ${prog_disclose(mostrar_uso_responsable_ia)}
+  <br/>  
+  
+  
+
+---
+
+modules:
+
+  - .progressivedisclosure
+  - docassemble.demo.accordion
+  - .google_sheets
+  - docassemble.ALToolbox.llms
+  - docassemble.AssemblyLine.sessions
+  
+---
+
+features:
+
+  css: progressivedisclosure.css
+
+---
+
+features:
+
+  css: cactus_debug_removed.css
+  debug: true
+  labels above fields: True
+  navigation: true
+  progress bar: false
+  question back button: True
+    
+    
+---
+
+metadata:
+  title: |
+    
+  short title: |
+     
+  description: |
+    Archivo para mejorar el acceso al conocimiento y ejercicio de derechos en materia de datos personales.
+  authors:
+    - name: Diego Flores O y Verónica Siten
+      organization: Cactus Legal Tech
+  show login: False
+  exit label: |
+    
+  exit url: https://www.cactuslegaltech.com/
+  
+  
+---
+
+template: mostrar_ayuda_local
+subject: |
+  Ayuda
+content: |      
+  <button  style="border: 1px solid #25522E; color: #000000; padding: 6px 12px;" onclick="window.location.href='https://wa.me/523310494803'">Contactar abogado</button>
+  <br/>
+  <br/>
+  <button  style="border: 1px solid #25522E; color: #000000; padding: 6px 12px;" onclick="window.location.href='https://wa.me/523315401920'">Soporte técnico</button>
+  <br/>
+  <br/>
+  <br/>
